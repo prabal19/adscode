@@ -25,5 +25,9 @@ app.get('/ads/:type.js', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`✅ Ad server running at http://localhost:${port}`);
+  console.log(`✅ Ad server running at ${port}`);
+});
+
+app.get('/', (req, res) => {
+  res.send('✅ Ad server is up and running!');
 });
