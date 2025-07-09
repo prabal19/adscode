@@ -67,7 +67,7 @@ closeWrapper.style.cursor = 'pointer';
 closeWrapper.style.boxSizing = 'border-box';
 
 const closeBtn = document.createElement('div');
-closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path fill="#00aecd" d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"/></svg>';
+closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path fill="#00aecd" stroke="#00aecd" stroke-width="1.25" d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"/></svg>';
 
 closeWrapper.appendChild(closeBtn);
 const adLabel = document.createElement('span');
