@@ -70,9 +70,9 @@ const closeBtn = document.createElement('div');
 closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path fill="#00aecd" stroke="#00aecd" stroke-width="1.25" d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"/></svg>';
 
 closeWrapper.appendChild(closeBtn);
-const adLabel = document.createElement('span');
+const adLabel = document.createElement('div');
 adLabel.textContent = 'Ads by Google';
-adLabel.style.cssText = 'font-size:12px; color:#333; display:none; background:white height:14px';
+adLabel.style.cssText = 'font-size:12px; color:#333; display:none; background:white height:15px width:15px';
 infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline');
 infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none');
 
