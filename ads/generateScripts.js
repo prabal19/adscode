@@ -155,9 +155,9 @@ export function generateAdScript(type) {
       options.forEach(optionText => {
         const optBtn = document.createElement('button');
         optBtn.textContent = optionText;
-        optbtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:white; cursor:pointer; font-size:14px;';
-        optbtn.onmouseenter = () => btn.style.background = '#f1f1f1';
-        optbtn.onmouseleave = () => btn.style.background = 'white';
+        optBtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:white; cursor:pointer; font-size:14px;';
+        optBtn.onmouseenter = () => btn.style.background = '#f1f1f1';
+        optBtn.onmouseleave = () => btn.style.background = 'white';
 
         optBtn.onclick = () => {
           feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks for your feedback!</div>';
