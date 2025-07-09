@@ -97,7 +97,7 @@ export function generateAdScript(type) {
       feedbackUI.style.height = height + 'px';
       feedbackUI.style.border = '1px solid #ccc';
       feedbackUI.style.borderRadius = '8px';
-      feedbackUI.style.background = '#00000066';
+      feedbackUI.style.background = '#f8f9fa';
       feedbackUI.style.display = 'flex';
       feedbackUI.style.flexDirection = 'column';
       feedbackUI.style.justifyContent = 'center';
