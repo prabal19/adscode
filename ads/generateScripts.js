@@ -74,7 +74,7 @@ closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15
 closeWrapper.appendChild(closeBtn);
 const adLabel = document.createElement('div');
 adLabel.textContent = 'Ads by Google';
-adLabel.style.cssText = 'font-size:10px; color:#333; display:none; background:white; height:15px;';
+adLabel.style.cssText = 'font-size:10px; border-bottom-left-radius:4px; color:#333; display:none; background:white; height:15px;';
 infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline');
 infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none');
 
