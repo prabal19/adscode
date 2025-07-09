@@ -6,22 +6,25 @@ export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 export const adStyles = {
   full: {
-    maxWidth: '700px', // Responsive but constrained
+    maxWidth: '700px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
+    minHeight: '250px'  
   },
   sidebar: {
-    maxWidth: '320px', // Great for sidebar on desktop
+    maxWidth: '320px',
     layout: 'right',
     margin: '12px 0',
     padding: '0',
+    minHeight: '280px'  
   },
   below: {
     maxWidth: '600px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
+    minHeight: '220px' 
   },
 };
 

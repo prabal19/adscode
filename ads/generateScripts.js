@@ -16,6 +16,7 @@ export function generateAdScript(type) {
 
     const wrapper = document.createElement('div');
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
+    wrapper.style.minHeight = '${adStyle.minHeight}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
     wrapper.style.border = '1px solid #ccc';
@@ -179,8 +180,9 @@ export function generateAdScript(type) {
     }
 
     closeBtn.onclick = () => {
-      const width = wrapper.offsetWidth;
-      const height = wrapper.offsetHeight;
+      const rect = wrapper.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
       wrapper.innerHTML = '';
       wrapper.appendChild(createFeedbackUI(width, height));
     };
