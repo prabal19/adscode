@@ -128,23 +128,18 @@
     return container;
   }
 
-  async function fetchAds(type) {
-    try {
-      const res = await fetch(`https://adscode.onrender.com/ads/${type}.js`);
-      const text = await res.text();
-      const adScript = document.createElement('script');
-      adScript.textContent = text;
-      document.body.appendChild(adScript);
-    } catch (err) {
-      console.error('Failed to fetch ad:', err);
-    }
+  function loadScript(url, onLoad) {
+    const s = document.createElement('script');
+    s.src = url;
+    s.async = true;
+    s.onload = onLoad;
+    document.body.appendChild(s);
   }
 
   Object.entries(containers).forEach(([id, type]) => {
     const el = document.getElementById(id);
     if (el) {
-      // fetch the ad data from global window[`${type}Ads`] after ads/*.js runs
-      fetchAds(type).then(() => {
+      loadScript(`https://adscode.onrender.com/ads/${type}.js`, () => {
         const adsArray = window[`${type}Ads`] || [];
         if (adsArray.length > 0) {
           const ad = adsArray[Math.floor(Math.random() * adsArray.length)];
