@@ -26,26 +26,30 @@ export function generateAdScript(type) {
     wrapper.style.background = '#fff';
     wrapper.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
 
-    // Info button with your SVG icon
-    const infoBtn = document.createElement('a');
-    infoBtn.href = 'https://adssettings.google.com/whythisad';
-    infoBtn.target = '_blank';
-    infoBtn.title = 'Why this ad?';
-    infoBtn.innerHTML = \`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="16" height="16" fill="black">
-        <path d="M7.5 1.5a6 6 0 100 12 6 6 0 100-12m0 1a5 5 0 110 10 5 5 0 110-10zM6.625 11h1.75V6.5h-1.75zM7.5 3.75a1 1 0 100 2 1 1 0 100-2z"></path>
-      </svg>\`;
-    infoBtn.style.cssText = 'position:absolute;top:8px;right:40px;cursor:pointer;z-index:10;';
+    // === Ad Label Wrapper ===
+    const labelWrapper = document.createElement('div');
+    labelWrapper.style.cssText = 'position:absolute; top:5px; right:5px; display:flex; align-items:center; gap:5px; background:white; padding:2px 6px; border-radius:4px; z-index:10;';
 
-    // Close button with your SVG icon
-    const closeBtn = document.createElement('button');
-    closeBtn.type = 'button';
-    closeBtn.title = 'Close ad';
-    closeBtn.innerHTML = \`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="16" height="16" stroke="black" stroke-width="1.5" stroke-linecap="round">
-        <path d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"></path>
-      </svg>\`;
-    closeBtn.style.cssText = 'position:absolute;top:8px;right:8px;border:none;background:none;cursor:pointer;z-index:10;padding:0;';
+    // === Ads by Google Label (initially hidden) ===
+    const adLabel = document.createElement('span');
+    adLabel.textContent = 'Ads by Google';
+    adLabel.style.cssText = 'font-size:12px; color:#333; display:none;';
+
+    // === Info Button SVG ===
+    const infoBtn = document.createElement('span');
+    infoBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path fill="#1a73e8" d="M7.5 1.5a6 6 0 100 12 6 6 0 100-12m0 1a5 5 0 110 10 5 5 0 110-10zM6.625 11h1.75V6.5h-1.75zM7.5 3.75a1 1 0 100 2 1 1 0 100-2z"></path></svg>';
+    infoBtn.style.cssText = 'cursor:pointer; background:white; padding:2px; border-radius:4px;';
+    infoBtn.title = 'Why this ad?';
+    infoBtn.onclick = () => window.open('https://adssettings.google.com/whythisad', '_blank');
+
+    // Show label on hover
+    infoBtn.addEventListener('mouseenter', () => adLabel.style.display = 'inline');
+    infoBtn.addEventListener('mouseleave', () => adLabel.style.display = 'none');
+
+    // === Close Button SVG ===
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path stroke="#1a73e8" stroke-width="1.5" fill="none" d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"></path></svg>';
+    closeBtn.style.cssText = 'cursor:pointer; background:white; padding:2px; border-radius:4px;';
 
     // Image
     const img = document.createElement('img');
@@ -77,12 +81,15 @@ export function generateAdScript(type) {
     adLink.appendChild(img);
     adLink.appendChild(content);
 
-    // Append all
-    wrapper.appendChild(infoBtn);
-    wrapper.appendChild(closeBtn);
+    labelWrapper.appendChild(adLabel);
+    labelWrapper.appendChild(infoBtn);
+    labelWrapper.appendChild(closeBtn);
+
+    // Now append everything to the ad wrapper
+    wrapper.appendChild(labelWrapper);
     wrapper.appendChild(adLink);
     adContainer.appendChild(wrapper);
-
+    
     // Feedback UI (hidden initially)
     function createFeedbackUI(width, height) {
       const feedbackUI = document.createElement('div');
@@ -90,7 +97,7 @@ export function generateAdScript(type) {
       feedbackUI.style.height = height + 'px';
       feedbackUI.style.border = '1px solid #ccc';
       feedbackUI.style.borderRadius = '8px';
-      feedbackUI.style.background = '#fff';
+      feedbackUI.style.background = '#f8f9fa';
       feedbackUI.style.display = 'flex';
       feedbackUI.style.flexDirection = 'column';
       feedbackUI.style.justifyContent = 'center';
@@ -115,12 +122,15 @@ export function generateAdScript(type) {
       whyBtn.href = 'https://adssettings.google.com/whythisad';
       whyBtn.target = '_blank';
       whyBtn.textContent = 'Why this ad?';
-      whyBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; text-decoration:none; color:#444; cursor:pointer; background:#f9f9f9;';
+      sendFbBtn.onmouseenter = () => sendFbBtn.style.background = '#1669c1';
+      sendFbBtn.onmouseleave = () => sendFbBtn.style.background = '#1a73e8';
 
       // Send feedback button
       const sendFbBtn = document.createElement('button');
       sendFbBtn.textContent = 'Send feedback';
-      sendFbBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; background:#f9f9f9; cursor:pointer;';
+      sendFbBtn.style.cssText = 'padding:6px 12px; border:none; border-radius:4px; background:#1a73e8; color:white; cursor:pointer; font-weight:500;';
+      sendFbBtn.onmouseenter = () => sendFbBtn.style.background = '#1669c1';
+      sendFbBtn.onmouseleave = () => sendFbBtn.style.background = '#1a73e8';
 
       buttonsDiv.appendChild(whyBtn);
       buttonsDiv.appendChild(sendFbBtn);
@@ -145,7 +155,10 @@ export function generateAdScript(type) {
       options.forEach(optionText => {
         const optBtn = document.createElement('button');
         optBtn.textContent = optionText;
-        optBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; background:#f7f7f7; cursor:pointer;';
+        optbtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:white; cursor:pointer; font-size:14px;';
+        optbtn.onmouseenter = () => btn.style.background = '#f1f1f1';
+        optbtn.onmouseleave = () => btn.style.background = 'white';
+
         optBtn.onclick = () => {
           feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks for your feedback!</div>';
           setTimeout(() => {
