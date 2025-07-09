@@ -5,123 +5,154 @@
     'below-ad': 'below',
   };
 
-  Object.entries(containers).forEach(([id, type]) => {
-    const container = document.getElementById(id);
-    if (container) {
-      const script = document.createElement('script');
-      script.src = `https://adscode.onrender.com/ads/${type}.js`;
-      script.async = true;
+  const feedbackOptions = [
+    'Ad was inappropriate',
+    'Not interested in this ad',
+    'Ad covered content',
+    'Seen this ad multiple times',
+  ];
 
-      // Append script with onload hook to attach UI
-      script.onload = () => {
-        setTimeout(() => {
-          enhanceAd(container);
-        }, 100); // wait briefly to ensure ad content is rendered
-      };
+  function createAdUI(type, ad) {
+    const container = document.createElement('div');
+    container.style.position = 'relative';
+    container.style.border = '1px solid #ccc';
+    container.style.padding = '10px';
+    container.style.margin = '10px auto';
+    container.style.maxWidth = type === 'sidebar' ? '320px' : '600px';
+    container.style.fontFamily = 'Arial, sans-serif';
+    container.style.background = '#fff';
 
-      container.appendChild(script);
-    }
-  });
+    // Info + Close Buttons Container
+    const btnContainer = document.createElement('div');
+    btnContainer.style.position = 'absolute';
+    btnContainer.style.top = '6px';
+    btnContainer.style.right = '6px';
+    btnContainer.style.zIndex = '10';
+    btnContainer.style.display = 'flex';
+    btnContainer.style.gap = '4px';
 
-  function enhanceAd(container) {
-    const adBox = container.querySelector('.ad-box'); // Assuming ad HTML uses .ad-box
-
-    if (!adBox) return;
-
-    adBox.style.position = 'relative';
-
+    // Info button
     const infoBtn = document.createElement('button');
     infoBtn.innerHTML = 'ℹ️';
-    infoBtn.title = 'Why this ad?';
-    infoBtn.style.position = 'absolute';
-    infoBtn.style.top = '8px';
-    infoBtn.style.right = '32px';
-    infoBtn.style.background = 'transparent';
     infoBtn.style.border = 'none';
+    infoBtn.style.background = 'transparent';
     infoBtn.style.cursor = 'pointer';
+    infoBtn.title = 'Why this ad?';
     infoBtn.onclick = () => {
       window.open('https://adssettings.google.com/whythisad', '_blank');
     };
 
+    // Close button
     const closeBtn = document.createElement('button');
-    closeBtn.innerHTML = '×';
-    closeBtn.title = 'Close ad';
-    closeBtn.style.position = 'absolute';
-    closeBtn.style.top = '8px';
-    closeBtn.style.right = '8px';
-    closeBtn.style.background = 'transparent';
+    closeBtn.innerHTML = '✖️';
     closeBtn.style.border = 'none';
+    closeBtn.style.background = 'transparent';
     closeBtn.style.cursor = 'pointer';
-    closeBtn.onclick = () => showFeedbackUI(container, adBox);
+    closeBtn.title = 'Close ad';
 
-    adBox.appendChild(infoBtn);
-    adBox.appendChild(closeBtn);
-  }
+    btnContainer.appendChild(infoBtn);
+    btnContainer.appendChild(closeBtn);
+    container.appendChild(btnContainer);
 
-  function showFeedbackUI(container, adBox) {
-    adBox.remove(); // remove the ad
+    // Ad image
+    const img = document.createElement('img');
+    img.src = ad.image;
+    img.alt = ad.title;
+    img.style.width = '100%';
+    img.style.borderRadius = '4px';
+    container.appendChild(img);
 
-    const feedbackDiv = document.createElement('div');
-    feedbackDiv.className = 'feedback-ui';
-    feedbackDiv.style.padding = '12px';
-    feedbackDiv.style.border = '1px solid #ccc';
-    feedbackDiv.style.fontFamily = 'Arial, sans-serif';
-    feedbackDiv.style.maxWidth = '400px';
-    feedbackDiv.style.margin = '0 auto';
-    feedbackDiv.style.background = '#f9f9f9';
+    // Ad title
+    const title = document.createElement('h4');
+    title.textContent = ad.title;
+    container.appendChild(title);
 
-    const msg = document.createElement('p');
-    msg.textContent = 'Ad served by Your Network';
-    msg.style.fontWeight = 'bold';
+    // Ad description
+    const desc = document.createElement('p');
+    desc.textContent = ad.description;
+    container.appendChild(desc);
 
-    const btnWhy = document.createElement('button');
-    btnWhy.textContent = 'Why this ad?';
-    btnWhy.style.marginRight = '10px';
-    btnWhy.onclick = () => {
-      window.open('https://adssettings.google.com/whythisad', '_blank');
+    // CTA
+    const link = document.createElement('a');
+    link.href = ad.link;
+    link.target = '_blank';
+    link.textContent = 'Learn more';
+    link.style.color = '#1a73e8';
+    container.appendChild(link);
+
+    // Feedback UI
+    const feedbackUI = document.createElement('div');
+    feedbackUI.style.display = 'none';
+    feedbackUI.style.marginTop = '10px';
+    feedbackUI.style.borderTop = '1px solid #ddd';
+    feedbackUI.style.paddingTop = '8px';
+
+    const feedbackText = document.createElement('p');
+    feedbackText.textContent = 'Ad served by Flytant';
+    feedbackText.style.fontSize = '12px';
+    feedbackText.style.marginBottom = '8px';
+    feedbackUI.appendChild(feedbackText);
+
+    const whyBtn = document.createElement('button');
+    whyBtn.textContent = 'Why this ad?';
+    whyBtn.onclick = () => window.open('https://adssettings.google.com/whythisad', '_blank');
+    whyBtn.style.marginRight = '10px';
+
+    const feedbackBtn = document.createElement('button');
+    feedbackBtn.textContent = 'Send feedback';
+    feedbackBtn.onclick = () => {
+      feedbackOptions.forEach(option => {
+        const optBtn = document.createElement('button');
+        optBtn.textContent = option;
+        optBtn.style.display = 'block';
+        optBtn.style.marginTop = '6px';
+        optBtn.onclick = () => {
+          feedbackUI.innerHTML = '<p style="font-size: 14px;">Thanks for your feedback!</p>';
+          setTimeout(() => {
+            container.remove(); // hide ad
+          }, 1500);
+        };
+        feedbackUI.appendChild(optBtn);
+      });
     };
 
-    const btnFeedback = document.createElement('button');
-    btnFeedback.textContent = 'Send feedback';
-    btnFeedback.onclick = () => showFeedbackOptions(feedbackDiv, container);
+    feedbackUI.appendChild(whyBtn);
+    feedbackUI.appendChild(feedbackBtn);
+    container.appendChild(feedbackUI);
 
-    feedbackDiv.appendChild(msg);
-    feedbackDiv.appendChild(btnWhy);
-    feedbackDiv.appendChild(btnFeedback);
+    // Show feedback on close
+    closeBtn.onclick = () => {
+      feedbackUI.style.display = 'block';
+    };
 
-    container.innerHTML = '';
-    container.appendChild(feedbackDiv);
+    return container;
   }
 
-  function showFeedbackOptions(feedbackDiv, container) {
-    feedbackDiv.innerHTML = ''; // clear old content
-
-    const options = [
-      'Ad was inappropriate',
-      'Not interested in this ad',
-      'Ad covered content',
-      'Seen this ad multiple times',
-    ];
-
-    options.forEach((text) => {
-      const btn = document.createElement('button');
-      btn.textContent = text;
-      btn.style.display = 'block';
-      btn.style.margin = '6px 0';
-      btn.onclick = () => {
-        showThankYou(container);
-      };
-      feedbackDiv.appendChild(btn);
-    });
+  async function fetchAds(type) {
+    try {
+      const res = await fetch(`https://adscode.onrender.com/ads/${type}.js`);
+      const text = await res.text();
+      const adScript = document.createElement('script');
+      adScript.textContent = text;
+      document.body.appendChild(adScript);
+    } catch (err) {
+      console.error('Failed to fetch ad:', err);
+    }
   }
 
-  function showThankYou(container) {
-    container.innerHTML = '';
-    const thankYou = document.createElement('p');
-    thankYou.textContent = 'Thanks for your feedback.';
-    thankYou.style.padding = '12px';
-    thankYou.style.fontWeight = 'bold';
-    thankYou.style.fontFamily = 'Arial, sans-serif';
-    container.appendChild(thankYou);
-  }
+  Object.entries(containers).forEach(([id, type]) => {
+    const el = document.getElementById(id);
+    if (el) {
+      // fetch the ad data from global window[`${type}Ads`] after ads/*.js runs
+      fetchAds(type).then(() => {
+        const adsArray = window[`${type}Ads`] || [];
+        if (adsArray.length > 0) {
+          const ad = adsArray[Math.floor(Math.random() * adsArray.length)];
+          const adEl = createAdUI(type, ad);
+          el.innerHTML = '';
+          el.appendChild(adEl);
+        }
+      });
+    }
+  });
 })();
