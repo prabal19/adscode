@@ -38,7 +38,7 @@ labelWrapper.style.zIndex = '10';
 // Info button wrapper
 const infoWrapper = document.createElement('div');
 infoWrapper.style.background = 'white';
-infoWrapper.style.paddingTop = '2px';
+infoWrapper.style.paddingTop = '4px';
 infoWrapper.style.width = '15px';
 infoWrapper.style.height = '15px';
 infoWrapper.style.display = 'flex';
