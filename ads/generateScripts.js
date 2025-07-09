@@ -28,7 +28,7 @@ export function generateAdScript(type) {
 
     // === Ad Label Wrapper ===
     const labelWrapper = document.createElement('div');
-    labelWrapper.style.cssText = 'position:absolute; top:5px; right:5px; display:flex; align-items:center; gap:5px; background:white; padding:2px; border-radius:4px; z-index:10;';
+    labelWrapper.style.cssText = 'position:absolute; top:5px; right:5px; display:flex; align-items:center; gap:5px; background:white; padding:0; border-radius:4px; z-index:10;';
 
     // === Ads by Google Label (initially hidden) ===
     const adLabel = document.createElement('span');
