@@ -16,7 +16,6 @@ export function generateAdScript(type) {
 
     const wrapper = document.createElement('div');
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
-    wrapper.style.minHeight = '${adStyle.minHeight}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
     wrapper.style.border = '1px solid #ccc';
@@ -123,8 +122,9 @@ export function generateAdScript(type) {
       whyBtn.href = 'https://adssettings.google.com/whythisad';
       whyBtn.target = '_blank';
       whyBtn.textContent = 'Why this ad?';
-      sendFbBtn.onmouseenter = () => sendFbBtn.style.background = '#1669c1';
-      sendFbBtn.onmouseleave = () => sendFbBtn.style.background = '#1a73e8';
+      whyBtn.style.cssText = 'margin:5px; padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:white; color:#333; cursor:pointer; font-weight:500;';
+      whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
+      whyBtn.onmouseleave = () => whyBtn.style.background = 'white';
 
       // Send feedback button
       const sendFbBtn = document.createElement('button');
@@ -180,9 +180,8 @@ export function generateAdScript(type) {
     }
 
     closeBtn.onclick = () => {
-      const rect = wrapper.getBoundingClientRect();
-      const width = rect.width;
-      const height = rect.height;
+      const width = wrapper.offsetWidth;
+      const height = wrapper.offsetHeight;
       wrapper.innerHTML = '';
       wrapper.appendChild(createFeedbackUI(width, height));
     };
