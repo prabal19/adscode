@@ -28,8 +28,8 @@ export function generateAdScript(type) {
 
     const labelWrapper = document.createElement('div');
 labelWrapper.style.position = 'absolute';
-labelWrapper.style.top = '5px';
-labelWrapper.style.right = '5px';
+labelWrapper.style.top = '0px';
+labelWrapper.style.right = '0px';
 labelWrapper.style.display = 'flex';
 labelWrapper.style.alignItems = 'center';
 labelWrapper.style.gap = '2px';
