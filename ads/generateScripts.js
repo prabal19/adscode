@@ -1,115 +1,176 @@
-// ads/generateScript.js
 import { ads, adStyles } from './adsdata.js';
 
 export function generateAdScript(type) {
   const adList = ads[type];
+  const adStyle = adStyles[type];
+
   if (!adList || adList.length === 0) {
-    return `console.warn("No ads available for type: ${type}");`;
+    return `console.warn("No ads found for type: ${type}")`;
   }
 
   const ad = adList[Math.floor(Math.random() * adList.length)];
-  const style = adStyles[type];
-
-  const escape = (str) => str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
   return `
-    (function () {
-      const adContainer = document.currentScript.parentElement;
-      if (!adContainer) return;
+  (function () {
+    const adContainer = document.currentScript.parentElement;
 
-      const adWrapper = document.createElement('div');
-      adWrapper.style.maxWidth = "${style.maxWidth}";
-      adWrapper.style.margin = "${style.margin}";
-      adWrapper.style.padding = "${style.padding}";
-      adWrapper.style.position = "relative";
-      adWrapper.style.border = "1px solid #ddd";
-      adWrapper.style.borderRadius = "8px";
-      adWrapper.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.1)";
-      adWrapper.style.overflow = "hidden";
-      adWrapper.style.fontFamily = "Arial, sans-serif";
-      adWrapper.style.background = "#fff";
+    const wrapper = document.createElement('div');
+    wrapper.style.maxWidth = '${adStyle.maxWidth}';
+    wrapper.style.margin = '${adStyle.margin}';
+    wrapper.style.padding = '${adStyle.padding}';
+    wrapper.style.border = '1px solid #ccc';
+    wrapper.style.borderRadius = '8px';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.position = 'relative';
+    wrapper.style.fontFamily = 'Arial, sans-serif';
+    wrapper.style.background = '#fff';
+    wrapper.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
 
-      const adHTML = \`
-        <div style="position: relative;">
-          <a href="\${escape(ad.link)}" target="_blank" style="text-decoration: none; color: inherit;">
-            <img src="\${escape(ad.image)}" alt="Ad" style="width: 100%; display: block; border-bottom: 1px solid #eee;">
-            <div style="padding: 10px;">
-              <h4 style="margin: 0 0 5px; font-size: 16px;">\${escape(ad.title)}</h4>
-              <p style="margin: 0; font-size: 14px; color: #555;">\${escape(ad.description)}</p>
-            </div>
-          </a>
-          <div class="ad-buttons" style="position: absolute; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 10;">
-            <a href="https://adssettings.google.com/whythisad" target="_blank" style="text-decoration: none;">
-              <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M7.5 1.5a6 6 0 100 12 6 6 0 100-12m0 1a5 5 0 110 10 5 5 0 110-10zM6.625 11h1.75V6.5h-1.75zM7.5 3.75a1 1 0 100 2 1 1 0 100-2z"/>
-              </svg>
-            </a>
-            <button id="dismiss-btn" style="background: none; border: none; cursor: pointer; padding: 0;">
-              <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path stroke="currentColor" stroke-width="1.5" d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      \`;
+    // Info button with your SVG icon
+    const infoBtn = document.createElement('a');
+    infoBtn.href = 'https://adssettings.google.com/whythisad';
+    infoBtn.target = '_blank';
+    infoBtn.title = 'Why this ad?';
+    infoBtn.innerHTML = \`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="16" height="16" fill="black">
+        <path d="M7.5 1.5a6 6 0 100 12 6 6 0 100-12m0 1a5 5 0 110 10 5 5 0 110-10zM6.625 11h1.75V6.5h-1.75zM7.5 3.75a1 1 0 100 2 1 1 0 100-2z"></path>
+      </svg>\`;
+    infoBtn.style.cssText = 'position:absolute;top:8px;right:40px;cursor:pointer;z-index:10;';
 
-      adWrapper.innerHTML = adHTML;
-      adContainer.appendChild(adWrapper);
+    // Close button with your SVG icon
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.title = 'Close ad';
+    closeBtn.innerHTML = \`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="16" height="16" stroke="black" stroke-width="1.5" stroke-linecap="round">
+        <path d="M3.25 3.25l8.5 8.5m0-8.5l-8.5 8.5"></path>
+      </svg>\`;
+    closeBtn.style.cssText = 'position:absolute;top:8px;right:8px;border:none;background:none;cursor:pointer;z-index:10;padding:0;';
 
-      // Add Dismiss/Feedback logic
-      const dismissBtn = adWrapper.querySelector('#dismiss-btn');
-      dismissBtn?.addEventListener('click', () => {
-        const feedbackUI = document.createElement('div');
-        feedbackUI.style.width = adWrapper.offsetWidth + "px";
-        feedbackUI.style.height = adWrapper.offsetHeight + "px";
-        feedbackUI.style.display = "flex";
-        feedbackUI.style.flexDirection = "column";
-        feedbackUI.style.alignItems = "center";
-        feedbackUI.style.justifyContent = "center";
-        feedbackUI.style.border = "1px solid #ddd";
-        feedbackUI.style.borderRadius = "8px";
-        feedbackUI.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.1)";
-        feedbackUI.style.background = "#fff";
-        feedbackUI.innerHTML = \`
-          <div style="text-align: center;">
-            <p style="font-size: 14px; color: #444; margin: 0 0 12px;">Ad served by <strong>Google</strong></p>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-              <button id="feedback-btn" style="background-color: #1a73e8; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Send feedback</button>
-              <a href="https://adssettings.google.com/whythisad" target="_blank" style="padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; text-decoration: none; color: #444;">Why this ad? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="14" height="14"><path fill="currentColor" d="M7.5 1.5a6 6 0 100 12 6 6 0 100-12m0 1a5 5 0 110 10 5 5 0 110-10zM6.625 11h1.75V6.5h-1.75zM7.5 3.75a1 1 0 100 2 1 1 0 100-2z"></path></svg></a>
-            </div>
-          </div>
-        \`;
+    // Image
+    const img = document.createElement('img');
+    img.src = '${ad.image}';
+    img.alt = '${ad.title}';
+    img.style.cssText = 'width:100%;display:block;border-bottom:1px solid #ccc;';
 
-        adWrapper.innerHTML = '';
-        adWrapper.appendChild(feedbackUI);
+    // Content
+    const content = document.createElement('div');
+    content.style.padding = '12px';
 
-        feedbackUI.querySelector('#feedback-btn').addEventListener('click', () => {
-          const options = [
-            'Ad was inappropriate',
-            'Not interested in this ad',
-            'Ad covered content',
-            'Seen this ad multiple times',
-          ];
+    const title = document.createElement('div');
+    title.textContent = '${ad.title}';
+    title.style.cssText = 'font-weight:bold;margin-bottom:4px;font-size:16px;';
 
-          feedbackUI.innerHTML = '<p style="margin-bottom: 10px; font-weight: 500;">Why did you dismiss this ad?</p>';
-          options.forEach(option => {
-            const btn = document.createElement('button');
-            btn.textContent = option;
-            btn.style.margin = "4px";
-            btn.style.padding = "6px 10px";
-            btn.style.border = "1px solid #ccc";
-            btn.style.borderRadius = "4px";
-            btn.style.background = "#f9f9f9";
-            btn.style.cursor = "pointer";
-            feedbackUI.appendChild(btn);
+    const desc = document.createElement('div');
+    desc.textContent = '${ad.description}';
+    desc.style.cssText = 'font-size:14px;color:#555;';
 
-            btn.addEventListener('click', () => {
-              feedbackUI.innerHTML = '<p style="font-size: 14px; color: #444;">Thanks for your feedback</p>';
-              setTimeout(() => adWrapper.remove(), 1500);
-            });
-          });
-        });
+    content.appendChild(title);
+    content.appendChild(desc);
+
+    // Link wrapper
+    const adLink = document.createElement('a');
+    adLink.href = '${ad.link}';
+    adLink.target = '_blank';
+    adLink.style.textDecoration = 'none';
+    adLink.style.color = 'inherit';
+    adLink.appendChild(img);
+    adLink.appendChild(content);
+
+    // Append all
+    wrapper.appendChild(infoBtn);
+    wrapper.appendChild(closeBtn);
+    wrapper.appendChild(adLink);
+    adContainer.appendChild(wrapper);
+
+    // Feedback UI (hidden initially)
+    function createFeedbackUI(width, height) {
+      const feedbackUI = document.createElement('div');
+      feedbackUI.style.width = width + 'px';
+      feedbackUI.style.height = height + 'px';
+      feedbackUI.style.border = '1px solid #ccc';
+      feedbackUI.style.borderRadius = '8px';
+      feedbackUI.style.background = '#fff';
+      feedbackUI.style.display = 'flex';
+      feedbackUI.style.flexDirection = 'column';
+      feedbackUI.style.justifyContent = 'center';
+      feedbackUI.style.alignItems = 'center';
+      feedbackUI.style.fontFamily = 'Arial, sans-serif';
+      feedbackUI.style.fontSize = '14px';
+      feedbackUI.style.color = '#333';
+      feedbackUI.style.padding = '12px';
+      feedbackUI.style.boxSizing = 'border-box';
+      feedbackUI.style.textAlign = 'center';
+
+      // Buttons container
+      const buttonsDiv = document.createElement('div');
+      buttonsDiv.style.marginTop = '8px';
+      buttonsDiv.style.display = 'flex';
+      buttonsDiv.style.gap = '8px';
+      buttonsDiv.style.flexWrap = 'wrap';
+      buttonsDiv.style.justifyContent = 'center';
+
+      // Why this ad? link
+      const whyBtn = document.createElement('a');
+      whyBtn.href = 'https://adssettings.google.com/whythisad';
+      whyBtn.target = '_blank';
+      whyBtn.textContent = 'Why this ad?';
+      whyBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; text-decoration:none; color:#444; cursor:pointer; background:#f9f9f9;';
+
+      // Send feedback button
+      const sendFbBtn = document.createElement('button');
+      sendFbBtn.textContent = 'Send feedback';
+      sendFbBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; background:#f9f9f9; cursor:pointer;';
+
+      buttonsDiv.appendChild(whyBtn);
+      buttonsDiv.appendChild(sendFbBtn);
+
+      feedbackUI.appendChild(document.createTextNode('Ad served by Google'));
+      feedbackUI.appendChild(buttonsDiv);
+
+      // Feedback options container (hidden initially)
+      const optionsDiv = document.createElement('div');
+      optionsDiv.style.marginTop = '12px';
+      optionsDiv.style.display = 'none';
+      optionsDiv.style.flexDirection = 'column';
+      optionsDiv.style.gap = '8px';
+
+      const options = [
+        'Ad was inappropriate',
+        'Not interested in this ad',
+        'Ad covered content',
+        'Seen this ad multiple times'
+      ];
+
+      options.forEach(optionText => {
+        const optBtn = document.createElement('button');
+        optBtn.textContent = optionText;
+        optBtn.style.cssText = 'padding:6px 12px; border:1px solid #ccc; border-radius:4px; background:#f7f7f7; cursor:pointer;';
+        optBtn.onclick = () => {
+          feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks for your feedback!</div>';
+          setTimeout(() => {
+            adContainer.innerHTML = '';
+          }, 2000);
+        };
+        optionsDiv.appendChild(optBtn);
       });
-    })();
+
+      feedbackUI.appendChild(optionsDiv);
+
+      sendFbBtn.onclick = () => {
+        buttonsDiv.style.display = 'none';
+        optionsDiv.style.display = 'flex';
+      };
+
+      return feedbackUI;
+    }
+
+    closeBtn.onclick = () => {
+      const width = wrapper.offsetWidth;
+      const height = wrapper.offsetHeight;
+      wrapper.innerHTML = '';
+      wrapper.appendChild(createFeedbackUI(width, height));
+    };
+  })();
   `;
 }
