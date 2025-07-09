@@ -38,7 +38,7 @@ labelWrapper.style.zIndex = '10';
 // Info button wrapper
 const infoWrapper = document.createElement('div');
 infoWrapper.style.background = 'white';
-infoWrapper.style.paddingTop = '4px';
+infoWrapper.style.paddingTop = '3px';
 infoWrapper.style.width = '15px';
 infoWrapper.style.height = '15px';
 infoWrapper.style.display = 'flex';
@@ -61,7 +61,7 @@ const closeWrapper = document.createElement('div');
 closeWrapper.style.background = 'white';
 closeWrapper.style.width = '15px';
 closeWrapper.style.height = '15px';
-closeWrapper.style.paddingTop = '2px';
+closeWrapper.style.paddingTop = '3px';
 closeWrapper.style.display = 'flex';
 closeWrapper.style.alignItems = 'center';
 closeWrapper.style.justifyContent = 'center';
