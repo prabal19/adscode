@@ -169,10 +169,11 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
       const iconImg = document.createElement('img');
       iconImg.src = 'https://googleads.g.doubleclick.net/pagead/images/abg/iconx2-000000.png';
       iconImg.alt = 'i';
-      iconImg.style.cssText = 'width: 1em; height: 1em;position: relative;display: inline-block;margin-bottom: -0.15em;opacity: 0.4;';
+      iconImg.style.cssText = 'width: 1em; height: 1em;position: relative;display: block;opacity: 0.4;';
 
-      const label = document.createTextNode('Why this ad?');
-      whyBtn.appendChild(label);
+      const labelSpan = document.createElement('span');
+      labelSpan.textContent = 'Why this ad?';
+      whyBtn.appendChild(labelspan);
       whyBtn.appendChild(iconImg);
 
       whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
