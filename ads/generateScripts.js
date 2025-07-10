@@ -12,6 +12,9 @@ export function generateAdScript(type) {
 
   return `
   (function () {
+    let originalAdClone = null; // To store original ad node
+let backState = null;       // To track where we are for back navigation
+
     const adContainer = document.currentScript.parentElement;
 
     const wrapper = document.createElement('div');
@@ -157,14 +160,14 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
       whyBtn.href = 'https://adssettings.google.com/whythisad?source=display&reasons=ASp5-QBiEQRYmrCoOc5EnylgqpkOwA-7iaHC3031tUVW0hf41wXvsPTcXswCMzo0q-fehjQmQOtvtOGyjUOwuM5mqXqvKKEud8GIIRna-dc3ewD8xKO10JYc1SB4t_ax9Y5YZdTDbq4lZ887Bx0I3XBHMGWbEtNiI9sBhKRzrqBW6hlZZBfGi19wphFebyEWjfahRXCA-T8QmUtxy5B81B50b3Jr107ZsAFLhBHqrWrUT8o-xOFZCOeWCjYQ0jZr3RCsNexZjSjKULc-Ey6uT6vJzsekGczEviuJtuGCyJm5SacbMrWRxTKVRyqUkKRVMdUkSiSe_TGLjTXNvVnQajtySqf-WRIhkRD4FRRuji6VQpbFbgRUef-5_94xlw9zMixDWMp_iBk_bZt00dh0B7xbqGReQF8OgAlAUrn7u2-bBAtv5fpcvOJY-HyelGYyFErVUn8CNtp_MFIPvXyjTKkdLX5T-zBh0zSL6fbdcMYSC6qb9J-59Wa4sha_rhOKM7MHLuTRe9a-UFea3EOuGx8GHWKI7H80Lfkqh8h6IsVIKlDN2c-jgRtvXZKQu_WrSRpORk1CtTIFABv7y-ZPn5Di-BMuRjqy2dyEf7fOXeQ3-t0waPQSEceOd_o3WGMxjIl53xMJ994cNdtgUw3i3vMrdoaSuIShs9nZoRsm8JDZK4yCvRvU5nuVLeEcKHvoj2GH5nYq9vPjdH9siuvq5IjA09hKQkCjImhoAEDED345xL5yrQDlUGvjnj86lfohZA8nyRS9S5DyQaYGrXoFZOBqrntbH7tmqdlTGFnckCUFpfmSuReTEzW5T5iaRKlSOqweDQeXQhq30WgAqKwoNGTDnWeUWDUhOCHMrwbQzOEWK4ZiGMShiFd2HcOtYB5EiY1w6BQXnv5dZ6UC5_evhhiJm01y8j4PbKAK66JGKAFEOzcdBMDrGwUHBqs_fIeILXYFenxJ90dxTH0-eadystjPmaV0VTIHH8wHYAuJUzH7pFw0j012BmP7lx4N4O2laBDuWHcBql3UIiGvjqOyZvsM6oWXU3LSq11M_ZJpqpn5ZpRnXPTNtQGbsF7G5ljpNWYuNzqTla5Z7TOcS8gleh-Coaz5ecJjsu7LpVY5KlzVNhNj2XOnL3T1Ly8qCx-R9bYVrdt45Y9oCEYs3soYHAwDgWpd2NXi8IURj1mC00N3POMRcQ3m8Mx4Lm38fopMnJsLz8cppz0MnvsgkSGiWinJP6_YjZdaxrGnTDy6xAwT59WnRwRWpRUtuH_4XVdVZ7tx7q3WUj_NblGcI4bpDO828mDt7yigk2onYlHy7zev7UUf-nVlOai-O_H3dUj8NlcTw_OjK5tbMuuI11_d7V4FBVNGswsTSPbotL2hjnlB3b7FigFHWivNJ7ihP3YMwv3rbS27_kbsFkvzmL3ZM0MCcsVPHyVscx7FcJNrEPlK9ACbikI4SgyIKQlhPGothk8zmCfG99YmTwm-Hcg0DHAcncgGc0mQKUYQzrE&opi=122715837';
       whyBtn.target = '_blank';
       whyBtn.textContent = 'Why this ad?';
-      whyBtn.style.cssText = 'display:inline-block; padding:8px 9.6px; text-decoration:none; border:1px solid #ccc; border-radius:4px; background:#fff; color: #9e9ea6; cursor:pointer; font-weight:500;';
+      whyBtn.style.cssText = 'display:inline-block; padding:8px 9.6px; text-decoration:none; border:1px solid #ccc; border-radius:2px; background:#fff; color: #9e9ea6; cursor:pointer; font-weight:500;box-shadow:0 0 2px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.26) !important';
       whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
       whyBtn.onmouseleave = () => whyBtn.style.background = 'white';
 
       // Send feedback button
       const sendFbBtn = document.createElement('button');
       sendFbBtn.textContent = 'Send feedback';
-      sendFbBtn.style.cssText = 'display:inline:block;font-size:16px;padding:8px 9.6px; border:none; border-radius:4px; background:#4285f5; color:white; cursor:pointer; font-weight:500;';
+      sendFbBtn.style.cssText = 'display:inline:block;font-size:16px;padding:8px 9.6px; border:none; border-radius:2px; box-shadow:0 0 2px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.26); background:#4285f5; color:white; cursor:pointer; font-weight:500;';
       sendFbBtn.onmouseenter = () => sendFbBtn.style.background = '#1669c1';
       sendFbBtn.onmouseleave = () => sendFbBtn.style.background = '#1a73e8';
 
@@ -174,6 +177,46 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
 
       const attributionWrapper = document.createElement('div');
 attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; font-size:1.2em; color:#777; font-family:arial,sans-serif;';
+
+const backButtonWrapper = document.createElement('div');
+backButtonWrapper.style.cssText = 'top:2px;left:2px;display:inline-block;position:absolute;color:black;font-size:15px;line-height:15px;opacity:0.5;height:15px;width:15px;user-select:none;cursor:pointer;z-index:2;';
+backButtonWrapper.setAttribute('id', 'menu-dismiss');
+
+// SVG Arrow Icon
+const backSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+backSVG.setAttribute('viewBox', '0 0 24 24');
+backSVG.style.cssText = 'width:100%;height:100%;';
+const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+path.setAttribute('class', 'native-arrow');
+path.setAttribute('d', 'M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z');
+backSVG.appendChild(path);
+backButtonWrapper.appendChild(backSVG);
+feedbackUI.appendChild(backButtonWrapper);
+
+
+backButtonWrapper.onclick = () => {
+  if (backState === 'feedback-options') {
+    // Go back to main feedback screen
+    optionsDiv.style.display = 'none';
+    buttonsDiv.style.display = 'flex';
+    backState = 'main';
+  } else if (backState === 'main') {
+    // Restore the original ad
+    if (originalAdClone) {
+      const newAd = originalAdClone.cloneNode(true); // Safe restoration
+      wrapper.replaceWith(newAd);
+
+      // Hide back button (not needed on ad screen)
+      const backBtn = document.getElementById('menu-dismiss');
+      if (backBtn) backBtn.style.display = 'none';
+
+      backState = null;
+    }
+  }
+};
+
+
+
 
 // Text part
 const textSpan = document.createElement('span');
@@ -230,17 +273,24 @@ feedbackUI.appendChild(attributionWrapper);
       sendFbBtn.onclick = () => {
         buttonsDiv.style.display = 'none';
         optionsDiv.style.display = 'flex';
-      };
-
+        backState = 'feedback-options';
+      };  
       return feedbackUI;
     }
+closeBtn.onclick = () => {
+  const width = wrapper.offsetWidth;
+  const height = wrapper.offsetHeight;
 
-    closeBtn.onclick = () => {
-      const width = wrapper.offsetWidth;
-      const height = wrapper.offsetHeight;
-      wrapper.innerHTML = '';
-      wrapper.appendChild(createFeedbackUI(width, height));
-    };
+  // Store the original ad as a clone (deep copy)
+  originalAdClone = wrapper.cloneNode(true);
+
+  // Clear wrapper and insert feedback UI
+  wrapper.innerHTML = '';
+  wrapper.appendChild(createFeedbackUI(width, height));
+
+  // Set backState to 'main' since we're now on main feedback screen
+  backState = 'main';
+};
   })();
   `;
 }
