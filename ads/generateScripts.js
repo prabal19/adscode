@@ -173,7 +173,7 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
 
       const labelSpan = document.createElement('span');
       labelSpan.textContent = 'Why this ad?';
-      whyBtn.appendChild(labelspan);
+      whyBtn.appendChild(labelSpan);
       whyBtn.appendChild(iconImg);
 
       whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
