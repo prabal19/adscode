@@ -18,7 +18,9 @@ let backState = null;       // To track where we are for back navigation
     const adContainer = document.currentScript.parentElement;
 
     const wrapper = document.createElement('div');
+    wrapper.style.width = '${adStyle.width}';
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
+    wrapper.style.height = '${adStyle.height}';
     wrapper.style.maxHeight = '${adStyle.maxHeight}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
@@ -28,16 +30,17 @@ let backState = null;       // To track where we are for back navigation
     wrapper.style.position = 'relative';
     wrapper.style.fontFamily = 'Arial, sans-serif';
     wrapper.style.background = '#fff';
+    wrapper.style.boxSizing = 'border-box';
     
 
     const labelWrapper = document.createElement('div');
-labelWrapper.style.position = 'absolute';
-labelWrapper.style.top = '0px';
-labelWrapper.style.right = '0px';
-labelWrapper.style.display = 'flex';
-labelWrapper.style.alignItems = 'center';
-labelWrapper.style.gap = '1px';
-labelWrapper.style.zIndex = '10';
+    labelWrapper.style.position = 'absolute';
+    labelWrapper.style.top = '0px';
+    labelWrapper.style.right = '0px';
+    labelWrapper.style.display = 'flex';
+    labelWrapper.style.alignItems = 'center';
+    labelWrapper.style.gap = '1px';
+    labelWrapper.style.zIndex = '10';
 
 const infoContainer = document.createElement('div');
 infoContainer.style.display = 'flex';
