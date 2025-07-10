@@ -168,8 +168,8 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
       iconImg.style.cssText = 'width: 1em; height: 1em;position: relative;display: inline-block;margin-bottom: -0.15em;opacity: 0.4;';
 
       const label = document.createTextNode('Why this ad?');
-      whyBtn.appendChild(iconImg);
       whyBtn.appendChild(label);
+      whyBtn.appendChild(iconImg);
 
       whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
       whyBtn.onmouseleave = () => whyBtn.style.background = 'white';
