@@ -285,7 +285,7 @@ feedbackUI.appendChild(attributionWrapper);
         };
 
         optBtn.onclick = () => {
-          feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks for your feedback!</div>';
+          feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks. Feedback improves Google Ads!</div>';
           setTimeout(() => {
             adContainer.innerHTML = '';
           }, 2000);
