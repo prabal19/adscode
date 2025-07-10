@@ -185,8 +185,20 @@ export function generateAdScript(type) {
     const whyBtn = document.createElement('a');
     whyBtn.href = 'https://adssettings.google.com/whythisad?source=display&reasons=ASp5-QBiEQRYmrCoOc5EnylgqpkOwA-7iaHC3031tUVW0hf41wXvsPTcXswCMzo0q-fehjQmQOtvtOGyjUOwuM5mqXqvKKEud8GIIRna-dc3ewD8xKO10JYc1SB4t_ax9Y5YZdTDbq4lZ887Bx0I3XBHMGWbEtNiI9sBhKRzrqBW6hlZZBfGi19wphFebyEWjfahRXCA-T8QmUtxy5B81B50b3Jr107ZsAFLhBHqrWrUT8o-xOFZCOeWCjYQ0jZr3RCsNexZjSjKULc-Ey6uT6vJzsekGczEviuJtuGCyJm5SacbMrWRxTKVRyqUkKRVMdUkSiSe_TGLjTXNvVnQajtySqf-WRIhkRD4FRRuji6VQpbFbgRUef-5_94xlw9zMixDWMp_iBk_bZt00dh0B7xbqGReQF8OgAlAUrn7u2-bBAtv5fpcvOJY-HyelGYyFErVUn8CNtp_MFIPvXyjTKkdLX5T-zBh0zSL6fbdcMYSC6qb9J-59Wa4sha_rhOKM7MHLuTRe9a-UFea3EOuGx8GHWKI7H80Lfkqh8h6IsVIKlDN2c-jgRtvXZKQu_WrSRpORk1CtTIFABv7y-ZPn5Di-BMuRjqy2dyEf7fOXeQ3-t0waPQSEceOd_o3WGMxjIl53xMJ994cNdtgUw3i3vMrdoaSuIShs9nZoRsm8JDZK4yCvRvU5nuVLeEcKHvoj2GH5nYq9vPjdH9siuvq5IjA09hKQkCjImhoAEDED345xL5yrQDlUGvjnj86lfohZA8nyRS9S5DyQaYGrXoFZOBqrntbH7tmqdlTGFnckCUFpfmSuReTEzW5T5iaRKlSOqweDQeXQhq30WgAqKwoNGTDnWeUWDUhOCHMrwbQzOEWK4ZiGMShiFd2HcOtYB5EiY1w6BQXnv5dZ6UC5_evhhiJm01y8j4PbKAK66JGKAFEOzcdBMDrGwUHBqs_fIeILXYFenxJ90dxTH0-eadystjPmaV0VTIHH8wHYAuJUzH7pFw0j012BmP7lx4N4O2laBDuWHcBql3UIiGvjqOyZvsM6oWXU3LSq11M_ZJpqpn5ZpRnXPTNtQGbsF7G5ljpNWYuNzqTla5Z7TOcS8gleh-Coaz5ecJjsu7LpVY5KlzVNhNj2XOnL3T1Ly8qCx-R9bYVrdt45Y9oCEYs3soYHAwDgWpd2NXi8IURj1mC00N3POMRcQ3m8Mx4Lm38fopMnJsLz8cppz0MnvsgkSGiWinJP6_YjZdaxrGnTDy6xAwT59WnRwRWpRUtuH_4XVdVZ7tx7q3WUj_NblGcI4bpDO828mDt7yigk2onYlHy7zev7UUf-nVlOai-O_H3dUj8NlcTw_OjK5tbMuuI11_d7V4FBVNGswsTSPbotL2hjnlB3b7FigFHWivNJ7ihP3YMwv3rbS27_kbsFkvzmL3ZM0MCcsVPHyVscx7FcJNrEPlK9ACbikI4SgyIKQlhPGothk8zmCfG99YmTwm-Hcg0DHAcncgGc0mQKUYQzrE&opi=122715837';
     whyBtn.target = '_blank';
-    whyBtn.style.cssText = 'display:inline-flex;gap:4px;padding:8px 9.6px;text-decoration:none;border:1px solid #ccc;border-radius:2px;background:#fff;color:#9e9ea6;font-weight:500;';
-    whyBtn.innerHTML = '<span>Why this ad?</span><img src="https://googleads.g.doubleclick.net/pagead/images/abg/iconx2-000000.png" style="width:1em;height:1em;opacity:0.4;">';
+      whyBtn.style.cssText = 'display:inline-flex; gap:4px; white-space:no-wrap; padding:8px 9.6px; text-decoration:none; border:1px solid #ccc; align-items:center; border-radius:2px; background:#fff; color: #9e9ea6; cursor:pointer; font-weight:500;box-shadow:0 0 2px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.26)'; 
+
+      const iconImg = document.createElement('img');
+      iconImg.src = 'https://googleads.g.doubleclick.net/pagead/images/abg/iconx2-000000.png';
+      iconImg.alt = 'i';
+      iconImg.style.cssText = 'width: 1em; height: 1em;position: relative;display: block;opacity: 0.4;';
+
+      const labelSpan = document.createElement('span');
+      labelSpan.textContent = 'Why this ad?';
+      whyBtn.appendChild(labelSpan);
+      whyBtn.appendChild(iconImg);
+
+      whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
+      whyBtn.onmouseleave = () => whyBtn.style.background = 'white';
 
     const optionsDiv = document.createElement('div');
     optionsDiv.style.cssText = 'margin-top:12px;display:none;flex-wrap:wrap;justify-content:center;gap:8px;maxWidth:100%;';
