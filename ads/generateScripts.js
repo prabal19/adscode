@@ -19,7 +19,7 @@ export function generateAdScript(type) {
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
     wrapper.style.border = '1px solid #ccc';
-    wrapper.style.borderRadius = '8px';
+    wrapper.style.borderRadius = '0px';
     wrapper.style.overflow = 'hidden';
     wrapper.style.position = 'relative';
     wrapper.style.fontFamily = 'Arial, sans-serif';
@@ -38,7 +38,7 @@ labelWrapper.style.zIndex = '10';
 // Info button wrapper
 const infoWrapper = document.createElement('div');
 infoWrapper.style.background = 'white';
-infoWrapper.style.paddingTop = '3px';
+infoWrapper.style.paddingTop = '2px';
 infoWrapper.style.width = '15px';
 infoWrapper.style.height = '15px';
 infoWrapper.style.display = 'flex';
@@ -61,7 +61,7 @@ const closeWrapper = document.createElement('div');
 closeWrapper.style.background = 'white';
 closeWrapper.style.width = '15px';
 closeWrapper.style.height = '15px';
-closeWrapper.style.paddingTop = '3px';
+closeWrapper.style.paddingTop = '2px';
 closeWrapper.style.display = 'flex';
 closeWrapper.style.alignItems = 'center';
 closeWrapper.style.justifyContent = 'center';
@@ -74,7 +74,19 @@ closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15
 closeWrapper.appendChild(closeBtn);
 const adLabel = document.createElement('div');
 adLabel.textContent = 'Ads by Google';
-adLabel.style.cssText = 'font-size:10px; border-bottom-left-radius:4px; color:#333; display:none; background:white; height:15px;';
+adLabel.style.cssText = '
+  font-size: 10px;
+  color: #333;
+  display: none;
+  background: white;
+  height: 15px;
+  line-height: 15px;
+  padding: 0 4px;
+  border-bottom-left-radius: 4px;
+  white-space: nowrap;
+  box-sizing: border-box;
+';
+
 infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline');
 infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none');
 
