@@ -189,12 +189,20 @@ export function generateAdScript(type) {
     whyBtn.innerHTML = '<span>Why this ad?</span><img src="https://googleads.g.doubleclick.net/pagead/images/abg/iconx2-000000.png" style="width:1em;height:1em;opacity:0.4;">';
 
     const optionsDiv = document.createElement('div');
-    optionsDiv.style.cssText = 'margin-top:12px;display:none;flex-wrap:wrap;justify-content:center;gap:8px;';
+    optionsDiv.style.cssText = 'margin-top:12px;display:none;flex-wrap:wrap;justify-content:center;gap:8px;maxWidth:100%;';
 
     ['Ad was inappropriate', 'Seen this ad multiple times', 'Ad covered content', 'Not interested in this ad'].forEach(text => {
       const btn = document.createElement('button');
       btn.textContent = text;
-      btn.style.cssText = 'width:90px;height:50px;border:1px solid #ccc;border-radius:2px;background:white;color:#4285f4;font-size:12px;font-weight:500;cursor:pointer;';
+      btn.style.cssText = 'width:90px;height:50px;border:1px solid #ccc;border-radius:2px;background:white;color:#4285f4;font-size:12px;font-weight:500;cursor:pointer;padding:1px 5px;textAlign:center;lineHeight:14px;whiteSpace:normal;flex:1 1 auto;box-shadow: 0 1px 3px rgba(0,0,0,0.1);transition: box-shadow 0.2s ease, background 0.2s ease;';
+      optBtn.onmouseenter = () => {
+          optBtn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+          optBtn.style.background = '#f8f9fa';
+        };
+        optBtn.onmouseleave = () => {
+          optBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+          optBtn.style.background = 'white';
+        };
       btn.onclick = () => {
         feedbackUI.innerHTML = '<div style="font-size:14px;padding:12px;">Thanks. Feedback improves Google Ads!</div>';
         setTimeout(() => adContainer.innerHTML = '', 2000);
@@ -202,9 +210,20 @@ export function generateAdScript(type) {
       optionsDiv.appendChild(btn);
     });
 
-    const attributionWrapper = document.createElement('div');
-    attributionWrapper.style.cssText = 'display:inline-block;line-height:1.28em;font-size:1.2em;color:#777;';
-    attributionWrapper.innerHTML = '<span>Ad served by</span><img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_84x28dp.png" style="margin-left:4px;height:1.25em;opacity:0.4;">';
+      // Text part
+      const textSpan = document.createElement('span');
+      textSpan.textContent = 'Ad served by';
+      textSpan.style.cssText = 'display:inline-block; vertical-align:middle;';
+
+      // Google logo
+      const logoImg = document.createElement('img');
+      logoImg.src = 'https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_84x28dp.png';
+      logoImg.alt = 'Google';
+      logoImg.style.cssText = 'margin: 0 0 -0.34em 4px;height: 1.25em;display: inline-block;width: auto; min-width: 3.75em; opacity: 0.4;vertical-align: middle;';
+
+      // Combine them
+      attributionWrapper.appendChild(textSpan);
+      attributionWrapper.appendChild(logoImg);
 
     sendFbBtn.onclick = () => {
       buttonsDiv.style.display = 'none';
@@ -217,8 +236,8 @@ export function generateAdScript(type) {
     buttonsDiv.appendChild(whyBtn);
 
     feedbackUI.appendChild(backBtn);
-    feedbackUI.appendChild(buttonsDiv);
     feedbackUI.appendChild(attributionWrapper);
+    feedbackUI.appendChild(buttonsDiv);
     feedbackUI.appendChild(optionsDiv);
     return feedbackUI;
   }
