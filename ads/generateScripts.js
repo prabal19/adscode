@@ -195,14 +195,15 @@ export function generateAdScript(type) {
       const btn = document.createElement('button');
       btn.textContent = text;
       btn.style.cssText = 'width:90px;height:50px;border:1px solid #ccc;border-radius:2px;background:white;color:#4285f4;font-size:12px;font-weight:500;cursor:pointer;padding:1px 5px;textAlign:center;lineHeight:14px;whiteSpace:normal;flex:1 1 auto;box-shadow: 0 1px 3px rgba(0,0,0,0.1);transition: box-shadow 0.2s ease, background 0.2s ease;';
-      optBtn.onmouseenter = () => {
-          optBtn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-          optBtn.style.background = '#f8f9fa';
-        };
-        optBtn.onmouseleave = () => {
-          optBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-          optBtn.style.background = 'white';
-        };
+btn.onmouseenter = () => {
+  btn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+  btn.style.background = '#f8f9fa';
+};
+btn.onmouseleave = () => {
+  btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+  btn.style.background = 'white';
+};
+
       btn.onclick = () => {
         feedbackUI.innerHTML = '<div style="font-size:14px;padding:12px;">Thanks. Feedback improves Google Ads!</div>';
         setTimeout(() => adContainer.innerHTML = '', 2000);
