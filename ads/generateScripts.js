@@ -18,7 +18,7 @@ export function generateAdScript(type) {
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
-  
+    wrapper.style.border = '1px solid #ccc';
     wrapper.style.borderRadius = '0px';
     wrapper.style.overflow = 'hidden';
     wrapper.style.position = 'relative';
@@ -89,7 +89,7 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
     const img = document.createElement('img');
     img.src = '${ad.image}';
     img.alt = '${ad.title}';
-    img.style.cssText = 'width:100%;display:block;';
+    img.style.cssText = 'width:100%;display:block;border-bottom:1px solid #ccc;';
 
     // Content
     const content = document.createElement('div');
@@ -172,7 +172,27 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
       buttonsDiv.appendChild(sendFbBtn);
       buttonsDiv.appendChild(whyBtn);
 
-      feedbackUI.appendChild(document.createTextNode('Ad served by Google'));
+      const attributionWrapper = document.createElement('div');
+attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; font-size:1.2em; color:#777; font-family:arial,sans-serif;';
+
+// Text part
+const textSpan = document.createElement('span');
+textSpan.textContent = 'Ad served by';
+textSpan.style.cssText = 'display:inline-block; vertical-align:middle;';
+
+// Google logo
+const logoImg = document.createElement('img');
+logoImg.src = 'https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_84x28dp.png';
+logoImg.alt = 'Google';
+logoImg.style.cssText = 'margin: 0 0 -0.34em 4px;height: 1.25em;display: inline-block;width: auto; min-width: 3.75em; opacity: 0.4;vertical-align: middle;';
+
+// Combine them
+attributionWrapper.appendChild(textSpan);
+attributionWrapper.appendChild(logoImg);
+
+// Append wherever needed
+feedbackUI.appendChild(attributionWrapper);
+
       feedbackUI.appendChild(buttonsDiv);
 
       // Feedback options container (hidden initially)
