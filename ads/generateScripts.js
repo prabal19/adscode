@@ -99,7 +99,7 @@ export function generateAdScript(type) {
     const img = document.createElement('img');
     img.src = '${ad.image}';
     img.alt = '${ad.title}';
-    img.style.cssText = 'width:100%;display:block;border-bottom:1px solid #ccc;';
+    img.style.cssText = 'width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 1px solid #ccc; max-width: 100%; max-height: 100%;';
 
     const content = document.createElement('div');
     content.style.padding = '12px';
