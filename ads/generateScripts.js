@@ -243,22 +243,33 @@ feedbackUI.appendChild(attributionWrapper);
       const optionsDiv = document.createElement('div');
       optionsDiv.style.marginTop = '12px';
       optionsDiv.style.display = 'none';
-      optionsDiv.style.flexDirection = 'column';
-      optionsDiv.style.gap = '8px';
+      optionsDiv.style.display = 'flex';
+      optionsDiv.style.flexWrap = 'wrap';
+      optionsDiv.style.justifyContent = 'center';
+      optionsDiv.style.gap = '12px';
+      optionsDiv.style.maxWidth = '100%';
 
-      const options = [
-        'Ad was inappropriate',
-        'Not interested in this ad',
-        'Ad covered content',
-        'Seen this ad multiple times'
-      ];
+      
+    const options = [
+      'Ad was inappropriate',
+      'Seen this ad multiple times',
+      'Ad covered content',
+      'Not interested in this ad'
+    ];
+
 
       options.forEach(optionText => {
         const optBtn = document.createElement('button');
         optBtn.textContent = optionText;
-        optBtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:2px; background:white; cursor:pointer; font-size:12px; color:#4285f4';
-        optBtn.onmouseenter = () => btn.style.background = '#f1f1f1';
-        optBtn.onmouseleave = () => btn.style.background = 'white';
+        optBtn.style.cssText = 'flex: 1 1 auto;min-width: 90px; padding:0;text-align:center; line-height:14px;border: 1px solid #ccc;border-radius: 2px;background: white;color: #4285f4;font-size: 12px;font-weight: 500;cursor: pointer;box-shadow: 0 1px 3px rgba(0,0,0,0.1);transition: box-shadow 0.2s ease, background 0.2s ease;white-space: nowrap;';
+        optBtn.onmouseenter = () => {
+          optBtn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+          optBtn.style.background = '#f8f9fa';
+        };
+        optBtn.onmouseleave = () => {
+          optBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+          optBtn.style.background = 'white';
+        };
 
         optBtn.onclick = () => {
           feedbackUI.innerHTML = '<div style="font-size:14px; padding: 12px;">Thanks for your feedback!</div>';
