@@ -243,13 +243,12 @@ feedbackUI.appendChild(attributionWrapper);
       const optionsDiv = document.createElement('div');
       optionsDiv.style.marginTop = '12px';
       optionsDiv.style.display = 'none';
-      optionsDiv.style.display = 'flex';
       optionsDiv.style.flexWrap = 'wrap';
       optionsDiv.style.justifyContent = 'center';
       optionsDiv.style.gap = '12px';
       optionsDiv.style.maxWidth = '100%';
 
-      
+
     const options = [
       'Ad was inappropriate',
       'Seen this ad multiple times',
@@ -261,7 +260,7 @@ feedbackUI.appendChild(attributionWrapper);
       options.forEach(optionText => {
         const optBtn = document.createElement('button');
         optBtn.textContent = optionText;
-        optBtn.style.cssText = 'flex: 1 1 auto;min-width: 90px; padding:0;text-align:center; line-height:14px;border: 1px solid #ccc;border-radius: 2px;background: white;color: #4285f4;font-size: 12px;font-weight: 500;cursor: pointer;box-shadow: 0 1px 3px rgba(0,0,0,0.1);transition: box-shadow 0.2s ease, background 0.2s ease;white-space: nowrap;';
+        optBtn.style.cssText = 'flex: 1 1 auto;min-width: 90px; padding: 1px 5px ;text-align:center; line-height:14px;border: 1px solid #ccc;border-radius: 2px;background: white;color: #4285f4;font-size: 12px;font-weight: 500;cursor: pointer;box-shadow: 0 1px 3px rgba(0,0,0,0.1);transition: box-shadow 0.2s ease, background 0.2s ease;white-space: nowrap;';
         optBtn.onmouseenter = () => {
           optBtn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
           optBtn.style.background = '#f8f9fa';
