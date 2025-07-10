@@ -39,9 +39,9 @@ export const fullAds = [
   {
     id: 'ad1',
     image: `${BASE_URL}/ads/full1.jpeg`,
-    title: 'Refresh Your World with Coca-Cola',
-    description: 'Enjoy the classic taste of Coca-Cola – the perfect companion for every moment.',
-    link: 'https://www.coca-cola.com/',
+    title: 'Make it with Creative Cloud',
+    description: 'Apps for photography, design, video, and web from US$9.99/mo.',
+    link: 'https://www.adobe.com/creativecloud.html',
   },
   {
     id: 'ad2',
