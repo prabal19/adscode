@@ -6,36 +6,28 @@ export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 export const adStyles = {
   full: {
-    width: '700px',
     maxWidth: '700px',
-    height: '90px',
     maxHeight: '90px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
   },
   sidebar: {
-    width: '160px',
     maxWidth: '160px',
-    height: '600px',
     maxHeight: '600px',
     layout: 'right',
     margin: '12px 0',
     padding: '0',
   },
   below: {
-    width: '700px',
     maxWidth: '700px',
-    height: '90px',
     maxHeight: '90px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
   },
   square: {
-    width: '300px',
     maxWidth: '300px',
-    height: '250px',
     maxHeight: '250px',
     layout: 'center',
     margin: '12px auto',

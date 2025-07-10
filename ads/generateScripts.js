@@ -18,9 +18,10 @@ let backState = null;       // To track where we are for back navigation
     const adContainer = document.currentScript.parentElement;
 
     const wrapper = document.createElement('div');
-    wrapper.style.width = '${adStyle.width}';
+    if (adStyle.width) wrapper.style.width = '${adStyle.width}';
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
-    wrapper.style.height = '${adStyle.height}';
+
+    if (adStyle.height) wrapper.style.height = '${adStyle.height}';
     wrapper.style.maxHeight = '${adStyle.maxHeight}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
