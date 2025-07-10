@@ -19,6 +19,7 @@ let backState = null;       // To track where we are for back navigation
 
     const wrapper = document.createElement('div');
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
+    wrapper.style.maxHeight = '${adStyle.maxHeight}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
     wrapper.style.border = '1px solid #ccc';

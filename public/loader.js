@@ -3,6 +3,7 @@
     'full-ad': 'full',
     'sidebar-ad': 'sidebar',
     'below-ad': 'below',
+    'square-ad': 'square',
   };
 
   Object.entries(containers).forEach(([id, type]) => {

@@ -6,19 +6,28 @@ export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 export const adStyles = {
   full: {
-    maxWidth: '700px', // Responsive but constrained
+    maxWidth: '730px',
+    maxheight: '90px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
   },
   sidebar: {
-    maxWidth: '320px', // Great for sidebar on desktop
+    maxWidth: '160px',
+    maxheight: '600px',
     layout: 'right',
     margin: '12px 0',
     padding: '0',
   },
   below: {
     maxWidth: '600px',
+    layout: 'center',
+    margin: '12px auto',
+    padding: '0',
+  },
+    square: { 
+    maxwidth: '300px',
+    maxheight: '250px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
@@ -59,8 +68,17 @@ export const sidebarAds = [
     link: 'https://example.com/ny-investing',
   },
 ];
+export const squareAds = [
+    {
+    id: 'ad5',
+    image: `${BASE_URL}/ads/square1.jpeg`,
+    title: 'Make it with Creative Cloud',
+    description: 'Apps for photography, design, video, and web from US$9.99/mo.',
+    link: 'https://www.adobe.com/creativecloud.html',
+  },
+]
 
-export const belowAds = [...fullAds, ...sidebarAds];
+export const belowAds = [...fullAds, ...sidebarAds,...squareAds];
 
 export const ads = {
   full: fullAds,
