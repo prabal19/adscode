@@ -101,19 +101,19 @@ export function generateAdScript(type) {
     img.alt = '${ad.title}';
     img.style.cssText = 'width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 1px solid #ccc; max-width: 100%; max-height: 100%;';
 
-    const content = document.createElement('div');
-    content.style.padding = '12px';
+    // const content = document.createElement('div');
+    // content.style.padding = '12px';
 
-    const title = document.createElement('div');
-    title.textContent = '${ad.title}';
-    title.style.cssText = 'font-weight:bold;margin-bottom:4px;font-size:16px;';
+    // const title = document.createElement('div');
+    // title.textContent = '${ad.title}';
+    // title.style.cssText = 'font-weight:bold;margin-bottom:4px;font-size:16px;';
 
-    const desc = document.createElement('div');
-    desc.textContent = '${ad.description}';
-    desc.style.cssText = 'font-size:14px;color:#555;';
+    // const desc = document.createElement('div');
+    // desc.textContent = '${ad.description}';
+    // desc.style.cssText = 'font-size:14px;color:#555;';
 
-    content.appendChild(title);
-    content.appendChild(desc);
+    // content.appendChild(title);
+    // content.appendChild(desc);
 
     const adLink = document.createElement('a');
     adLink.href = '${ad.link}';
@@ -121,7 +121,7 @@ export function generateAdScript(type) {
     adLink.style.textDecoration = 'none';
     adLink.style.color = 'inherit';
     adLink.appendChild(img);
-    adLink.appendChild(content);
+    // adLink.appendChild(content);
 
     wrapper.appendChild(labelWrapper);
     wrapper.appendChild(adLink);
