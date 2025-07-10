@@ -74,17 +74,9 @@ closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15
 closeWrapper.appendChild(closeBtn);
 const adLabel = document.createElement('div');
 adLabel.textContent = 'Ads by Google';
-adLabel.style.cssText = ' font-size: 10px;
-  color: #333;
-  display: none;
-  background: white;
-  height: 15px;
-  line-height: 15px;
-  padding: 0 4px;
-  border-bottom-left-radius: 4px;
-  white-space: nowrap;
-  box-sizing: border-box;';
-infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline');
+adLabel.style.cssText = 'font-size:10px; color:#333; display:none; background:white; width:74px;height:15px; line-height:15px; padding:0 4px; border-bottom-left-radius:4px; white-space:nowrap; box-sizing:border-box;';
+infoWrapper.appendChild(adLabel);
+infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline-block');
 infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none');
 
     // Image
@@ -117,7 +109,6 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
     adLink.appendChild(img);
     adLink.appendChild(content);
 
-    labelWrapper.appendChild(adLabel);
 labelWrapper.appendChild(infoWrapper);
 labelWrapper.appendChild(closeWrapper);
 
