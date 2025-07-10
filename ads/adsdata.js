@@ -94,4 +94,5 @@ export const ads = {
   full: fullAds,
   sidebar: sidebarAds,
   below: belowAds,
+  square: squareAds,
 };
