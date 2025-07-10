@@ -18,13 +18,13 @@ export function generateAdScript(type) {
     wrapper.style.maxWidth = '${adStyle.maxWidth}';
     wrapper.style.margin = '${adStyle.margin}';
     wrapper.style.padding = '${adStyle.padding}';
-    wrapper.style.border = '1px solid #ccc';
+  
     wrapper.style.borderRadius = '0px';
     wrapper.style.overflow = 'hidden';
     wrapper.style.position = 'relative';
     wrapper.style.fontFamily = 'Arial, sans-serif';
     wrapper.style.background = '#fff';
-    wrapper.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+    
 
     const labelWrapper = document.createElement('div');
 labelWrapper.style.position = 'absolute';
@@ -34,6 +34,12 @@ labelWrapper.style.display = 'flex';
 labelWrapper.style.alignItems = 'center';
 labelWrapper.style.gap = '2px';
 labelWrapper.style.zIndex = '10';
+
+const infoContainer = document.createElement('div');
+infoContainer.style.display = 'flex';
+infoContainer.style.alignItems = 'center';
+infoContainer.style.position = 'relative';
+infoContainer.style.height = '15px';
 
 // Info button wrapper
 const infoWrapper = document.createElement('div');
@@ -74,8 +80,8 @@ closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15
 closeWrapper.appendChild(closeBtn);
 const adLabel = document.createElement('div');
 adLabel.textContent = 'Ads by Google';
-adLabel.style.cssText = 'font-size:10px; color:#333; display:none; background:white; width:74px;height:15px; line-height:15px; padding:0 4px; border-bottom-left-radius:4px; white-space:nowrap; box-sizing:border-box;';
-infoWrapper.appendChild(adLabel);
+adLabel.style.cssText = 'font-size:10px; color:#333; display:none; background:white; width:74px;height:15px; line-height:15px; padding:0 4px; border-bottom-left-radius:4px; white-space:nowrap; box-sizing:border-box;font-weight:500;';
+
 infoWrapper.addEventListener('mouseenter', () => adLabel.style.display = 'inline-block');
 infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none');
 
@@ -83,7 +89,7 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
     const img = document.createElement('img');
     img.src = '${ad.image}';
     img.alt = '${ad.title}';
-    img.style.cssText = 'width:100%;display:block;border-bottom:1px solid #ccc;';
+    img.style.cssText = 'width:100%;display:block;';
 
     // Content
     const content = document.createElement('div');
@@ -109,8 +115,10 @@ infoWrapper.addEventListener('mouseleave', () => adLabel.style.display = 'none')
     adLink.appendChild(img);
     adLink.appendChild(content);
 
-labelWrapper.appendChild(infoWrapper);
-labelWrapper.appendChild(closeWrapper);
+    infoContainer.appendChild(adLabel);     // label on left
+    infoContainer.appendChild(infoWrapper); 
+    labelWrapper.appendChild(infoContainer);
+    labelWrapper.appendChild(closeWrapper);
 
     // Now append everything to the ad wrapper
     wrapper.appendChild(labelWrapper);
@@ -123,7 +131,7 @@ labelWrapper.appendChild(closeWrapper);
       feedbackUI.style.width = width + 'px';
       feedbackUI.style.height = height + 'px';
       feedbackUI.style.border = '1px solid #ccc';
-      feedbackUI.style.borderRadius = '8px';
+      feedbackUI.style.borderRadius = '0px';
       feedbackUI.style.background = '#f8f9fa';
       feedbackUI.style.display = 'flex';
       feedbackUI.style.flexDirection = 'column';
@@ -149,19 +157,20 @@ labelWrapper.appendChild(closeWrapper);
       whyBtn.href = 'https://adssettings.google.com/whythisad?source=display&reasons=ASp5-QBiEQRYmrCoOc5EnylgqpkOwA-7iaHC3031tUVW0hf41wXvsPTcXswCMzo0q-fehjQmQOtvtOGyjUOwuM5mqXqvKKEud8GIIRna-dc3ewD8xKO10JYc1SB4t_ax9Y5YZdTDbq4lZ887Bx0I3XBHMGWbEtNiI9sBhKRzrqBW6hlZZBfGi19wphFebyEWjfahRXCA-T8QmUtxy5B81B50b3Jr107ZsAFLhBHqrWrUT8o-xOFZCOeWCjYQ0jZr3RCsNexZjSjKULc-Ey6uT6vJzsekGczEviuJtuGCyJm5SacbMrWRxTKVRyqUkKRVMdUkSiSe_TGLjTXNvVnQajtySqf-WRIhkRD4FRRuji6VQpbFbgRUef-5_94xlw9zMixDWMp_iBk_bZt00dh0B7xbqGReQF8OgAlAUrn7u2-bBAtv5fpcvOJY-HyelGYyFErVUn8CNtp_MFIPvXyjTKkdLX5T-zBh0zSL6fbdcMYSC6qb9J-59Wa4sha_rhOKM7MHLuTRe9a-UFea3EOuGx8GHWKI7H80Lfkqh8h6IsVIKlDN2c-jgRtvXZKQu_WrSRpORk1CtTIFABv7y-ZPn5Di-BMuRjqy2dyEf7fOXeQ3-t0waPQSEceOd_o3WGMxjIl53xMJ994cNdtgUw3i3vMrdoaSuIShs9nZoRsm8JDZK4yCvRvU5nuVLeEcKHvoj2GH5nYq9vPjdH9siuvq5IjA09hKQkCjImhoAEDED345xL5yrQDlUGvjnj86lfohZA8nyRS9S5DyQaYGrXoFZOBqrntbH7tmqdlTGFnckCUFpfmSuReTEzW5T5iaRKlSOqweDQeXQhq30WgAqKwoNGTDnWeUWDUhOCHMrwbQzOEWK4ZiGMShiFd2HcOtYB5EiY1w6BQXnv5dZ6UC5_evhhiJm01y8j4PbKAK66JGKAFEOzcdBMDrGwUHBqs_fIeILXYFenxJ90dxTH0-eadystjPmaV0VTIHH8wHYAuJUzH7pFw0j012BmP7lx4N4O2laBDuWHcBql3UIiGvjqOyZvsM6oWXU3LSq11M_ZJpqpn5ZpRnXPTNtQGbsF7G5ljpNWYuNzqTla5Z7TOcS8gleh-Coaz5ecJjsu7LpVY5KlzVNhNj2XOnL3T1Ly8qCx-R9bYVrdt45Y9oCEYs3soYHAwDgWpd2NXi8IURj1mC00N3POMRcQ3m8Mx4Lm38fopMnJsLz8cppz0MnvsgkSGiWinJP6_YjZdaxrGnTDy6xAwT59WnRwRWpRUtuH_4XVdVZ7tx7q3WUj_NblGcI4bpDO828mDt7yigk2onYlHy7zev7UUf-nVlOai-O_H3dUj8NlcTw_OjK5tbMuuI11_d7V4FBVNGswsTSPbotL2hjnlB3b7FigFHWivNJ7ihP3YMwv3rbS27_kbsFkvzmL3ZM0MCcsVPHyVscx7FcJNrEPlK9ACbikI4SgyIKQlhPGothk8zmCfG99YmTwm-Hcg0DHAcncgGc0mQKUYQzrE&opi=122715837';
       whyBtn.target = '_blank';
       whyBtn.textContent = 'Why this ad?';
-      whyBtn.style.cssText = 'margin:5px; padding:8px 9.6px; border:1px solid #ccc; border-radius:4px; background:#fff; color: #9e9ea6; cursor:pointer; font-weight:500;';
+      whyBtn.style.cssText = 'display:inline-block; padding:8px 9.6px; text-decoration:none; border:1px solid #ccc; border-radius:4px; background:#fff; color: #9e9ea6; cursor:pointer; font-weight:500;';
       whyBtn.onmouseenter = () => whyBtn.style.background = '#f1f1f1';
       whyBtn.onmouseleave = () => whyBtn.style.background = 'white';
 
       // Send feedback button
       const sendFbBtn = document.createElement('button');
       sendFbBtn.textContent = 'Send feedback';
-      sendFbBtn.style.cssText = 'padding:8px 9.6px; border:none; border-radius:4px; background:#4285f5; color:white; cursor:pointer; font-weight:500;';
+      sendFbBtn.style.cssText = 'display:inline:block;font-size:16px;padding:8px 9.6px; border:none; border-radius:4px; background:#4285f5; color:white; cursor:pointer; font-weight:500;';
       sendFbBtn.onmouseenter = () => sendFbBtn.style.background = '#1669c1';
       sendFbBtn.onmouseleave = () => sendFbBtn.style.background = '#1a73e8';
 
-      buttonsDiv.appendChild(whyBtn);
+      
       buttonsDiv.appendChild(sendFbBtn);
+      buttonsDiv.appendChild(whyBtn);
 
       feedbackUI.appendChild(document.createTextNode('Ad served by Google'));
       feedbackUI.appendChild(buttonsDiv);
