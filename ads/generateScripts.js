@@ -211,6 +211,10 @@ btn.onmouseleave = () => {
       optionsDiv.appendChild(btn);
     });
 
+    const attributionWrapper = document.createElement('div');
+attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; font-size:1.2em; color:#777; font-family:arial,sans-serif;';
+
+
       // Text part
       const textSpan = document.createElement('span');
       textSpan.textContent = 'Ad served by';
