@@ -35,7 +35,7 @@ labelWrapper.style.top = '0px';
 labelWrapper.style.right = '0px';
 labelWrapper.style.display = 'flex';
 labelWrapper.style.alignItems = 'center';
-labelWrapper.style.gap = '2px';
+labelWrapper.style.gap = '1px';
 labelWrapper.style.zIndex = '10';
 
 const infoContainer = document.createElement('div');
@@ -199,6 +199,7 @@ backButtonWrapper.onclick = () => {
     // Go back to main feedback screen
     optionsDiv.style.display = 'none';
     buttonsDiv.style.display = 'flex';
+    attributionWrapper.style.display = 'inline-block';
     backState = 'main';
   } else if (backState === 'main') {
     // Restore the original ad
@@ -255,7 +256,7 @@ feedbackUI.appendChild(attributionWrapper);
       options.forEach(optionText => {
         const optBtn = document.createElement('button');
         optBtn.textContent = optionText;
-        optBtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:white; cursor:pointer; font-size:14px; color:#4285f4';
+        optBtn.style.cssText = 'margin:4px; padding:6px 10px; border:1px solid #ccc; border-radius:2px; background:white; cursor:pointer; font-size:12px; color:#4285f4';
         optBtn.onmouseenter = () => btn.style.background = '#f1f1f1';
         optBtn.onmouseleave = () => btn.style.background = 'white';
 
@@ -273,6 +274,7 @@ feedbackUI.appendChild(attributionWrapper);
       sendFbBtn.onclick = () => {
         buttonsDiv.style.display = 'none';
         optionsDiv.style.display = 'flex';
+        attributionWrapper.style.display = 'none';
         backState = 'feedback-options';
       };  
       return feedbackUI;
