@@ -43,14 +43,14 @@ export const fullAds = [
     image: `${BASE_URL}/ads/full1.jpeg`,
     title: 'Make it with Creative Cloud',
     description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/creativecloud.html',
+    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
   },
   {
     id: 'ad2',
     image: `${BASE_URL}/ads/full2.jpeg`,
     title: 'Service Now plans',
     description: 'Streamlining processes with embedded AI',
-    link: 'https://servicenow.com/',
+    link: 'https://www.servicenow.com/blogs/2024/how-leaders-are-using-ai-platforms?campid=232207&cid=ap:awa:albu:prgg:25q2:idcbloghowtechnology_nas_paitw2:none:sna:ctr&utm_medium=display&utm_source=dv360&cmcid=33259447&cmpid=418566586&cmaid=611386730&&cmrid=233286679&dclid=CKSqpruBtI4DFTm-ZgIdO3gvBQ&gclid=EAIaIQobChMI76_AuYG0jgMVMJ7YBR3_ExHfEAEYASAAEgLvrfD_BwE',
   },
 ];
 
@@ -60,14 +60,14 @@ export const sidebarAds = [
     image: `${BASE_URL}/ads/side1.jpeg`,
     title: 'Make it with Creative Cloud',
     description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/creativecloud.html',
+    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
   },
   {
     id: 'ad4',
     image: `${BASE_URL}/ads/side2.jpeg`,
     title: 'Smart Investing with ICICI Lombard',
     description: 'Grow your money with local investment insights.',
-    link: 'https://www.icicilombard.com/',
+    link: 'https://www.icicilombard.com/travel-insurance?source=prodcategory&opt=travel#products',
   },
 ];
 export const squareAds = [
@@ -76,7 +76,7 @@ export const squareAds = [
     image: `${BASE_URL}/ads/square1.jpeg`,
     title: 'Make it with Creative Cloud',
     description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/creativecloud.html',
+    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
   },
       {
     id: 'ad6',
