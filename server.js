@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { generateAdScript } from './ads/generateScripts.js';
-import { adsById } from './adsMap.js';
+import { adsById } from './utils/adsMap.js';
 
 dotenv.config();
 
