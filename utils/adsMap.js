@@ -1,5 +1,5 @@
 // adsMap.js
-import { fullAds, sidebarAds, belowAds, squareAds } from './adsdata.js';
+import { fullAds, sidebarAds, belowAds, squareAds } from '../ads/adsdata.js';
 
 const allAds = [...fullAds, ...sidebarAds, ...belowAds, ...squareAds];
 
