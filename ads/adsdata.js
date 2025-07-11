@@ -67,7 +67,7 @@ export const sidebarAds = [
     image: `${BASE_URL}/ads/side2.jpeg`,
     title: 'Smart Investing with ICICI Lombard',
     description: 'Grow your money with local investment insights.',
-    link: 'https://www.icicilombard.com/travel-insurance?source=prodcategory&opt=travel#products',
+    link: 'https://www.icicilombard.com/travel-insurance?utm_source=google_search&utm_medium=CPC&utm_campaign=Travel_Search_Brand_Jun24&utm_adgroup=&utm_keyword=icici%20lombard%20travel%20insurance&utm_device=c&utm_ad=722464898334&utm_placement=&utm_network=g&utm_matchtype=e&gad_source=1&gad_campaignid=21367868837&gbraid=0AAAAADqKtDGG3rhccCHc2zY7jietesVzQ&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5Betphn98bkI0haYt0wAjrC2bE1NshETZ-RPpbyTDnGPZi2B01bABBoChuQQAvD_BwE',
   },
 ];
 export const squareAds = [
