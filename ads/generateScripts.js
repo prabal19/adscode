@@ -116,7 +116,7 @@ export function generateAdScript(type) {
     // content.appendChild(desc);
 
     const adLink = document.createElement('a');
-    adLink.href = '${ad.link}';
+    adLink.href = 'https://adscode.onrender.com/pcs/click?xai=abc123&ad=${ad.id}&sig=xyz456&adurl=' + encodeURIComponent('${ad.link}');
     adLink.target = '_blank';
     adLink.style.textDecoration = 'none';
     adLink.style.color = 'inherit';
