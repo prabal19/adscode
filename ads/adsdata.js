@@ -36,58 +36,131 @@ export const adStyles = {
 };
 
 
-
 export const fullAds = [
   {
-    id: 'ad1',
-    image: `${BASE_URL}/ads/full1.jpeg`,
-    title: 'Make it with Creative Cloud',
-    description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
+    id: 'fujitsu_full',
+    image: `${BASE_URL}/fujitsu_full.png`,
+    title: 'Smarter Optical Networks',
+    description: 'Explore Fujitsu’s 800G innovation transforming network performance globally.',
+    link: '/pcs/click?ad=fujitsu_full',
   },
   {
-    id: 'ad2',
-    image: `${BASE_URL}/ads/full2.jpeg`,
-    title: 'Service Now plans',
-    description: 'Streamlining processes with embedded AI',
-    link: 'https://www.servicenow.com/blogs/2024/how-leaders-are-using-ai-platforms?campid=232207&cid=ap:awa:albu:prgg:25q2:idcbloghowtechnology_nas_paitw2:none:sna:ctr&utm_medium=display&utm_source=dv360&cmcid=33259447&cmpid=418566586&cmaid=611386730&&cmrid=233286679&dclid=CKSqpruBtI4DFTm-ZgIdO3gvBQ&gclid=EAIaIQobChMI76_AuYG0jgMVMJ7YBR3_ExHfEAEYASAAEgLvrfD_BwE',
+    id: 'indeed_full',
+    image: `${BASE_URL}/indeed_full.png`,
+    title: 'Hire Faster with Indeed',
+    description: 'Sponsored job posts help you attract the right talent quickly.',
+    link: '/pcs/click?ad=indeed_full',
+  },
+  {
+    id: 'maps_full',
+    image: `${BASE_URL}/maps_full.png`,
+    title: 'Google Maps Platform India',
+    description: 'Power your business with real-time location data using Google Maps APIs.',
+    link: '/pcs/click?ad=maps_full',
+  },
+  {
+    id: 'semrush_full',
+    image: `${BASE_URL}/semrush_full.png`,
+    title: 'All-in-One Marketing Toolkit',
+    description: 'SEO, PPC, and competitive research tools in one platform.',
+    link: '/pcs/click?ad=semrush_full',
+  },
+  {
+    id: 'siemens_full',
+    image: `${BASE_URL}/siemens_full.png`,
+    title: 'Adaptive Production by Siemens',
+    description: 'Discover digital solutions for smarter factories and efficiency.',
+    link: '/pcs/click?ad=siemens_full',
+  },
+  {
+    id: 'aws_full',
+    image: `${BASE_URL}/aws_full.png`,
+    title: 'AWS for GenAI Startups',
+    description: 'Join AWS programs for startups building with generative AI.',
+    link: '/pcs/click?ad=aws_full',
+  },
+  {
+    id: 'youtube_full',
+    image: `${BASE_URL}/youtube_full.png`,
+    title: 'Watch the Oscars on YouTube TV',
+    description: 'Stream the Oscars live and more with unlimited DVR space.',
+    link: '/pcs/click?ad=youtube_full',
   },
 ];
 
 export const sidebarAds = [
   {
-    id: 'ad3',
-    image: `${BASE_URL}/ads/side1.jpeg`,
-    title: 'Make it with Creative Cloud',
-    description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
+    id: 'adobe_side',
+    image: `${BASE_URL}/adobe_side.png`,
+    title: 'Adobe Creative Cloud',
+    description: 'Get powerful tools like Photoshop and Illustrator in one plan.',
+    link: '/pcs/click?ad=adobe_side',
   },
   {
-    id: 'ad4',
-    image: `${BASE_URL}/ads/side2.jpeg`,
-    title: 'Smart Investing with ICICI Lombard',
-    description: 'Grow your money with local investment insights.',
-    link: 'https://www.icicilombard.com/travel-insurance?utm_source=google_search&utm_medium=CPC&utm_campaign=Travel_Search_Brand_Jun24&utm_adgroup=&utm_keyword=icici%20lombard%20travel%20insurance&utm_device=c&utm_ad=722464898334&utm_placement=&utm_network=g&utm_matchtype=e&gad_source=1&gad_campaignid=21367868837&gbraid=0AAAAADqKtDGG3rhccCHc2zY7jietesVzQ&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5Betphn98bkI0haYt0wAjrC2bE1NshETZ-RPpbyTDnGPZi2B01bABBoChuQQAvD_BwE',
+    id: 'fiverr_side',
+    image: `${BASE_URL}/fiverr_side.png`,
+    title: 'Hire Freelancers on Fiverr',
+    description: 'Find top-rated talent for design, writing, tech & more.',
+    link: '/pcs/click?ad=fiverr_side',
+  },
+  {
+    id: 'indeed_side',
+    image: `${BASE_URL}/indeed_side.png`,
+    title: 'Reach More Job Seekers',
+    description: 'Promote your job posts with Indeed sponsored listings.',
+    link: '/pcs/click?ad=indeed_side',
+  },
+  {
+    id: 'youtube_side',
+    image: `${BASE_URL}/youtube_side.png`,
+    title: 'YouTube TV - No Cable Box',
+    description: 'Stream live TV and sports on all your devices, anywhere.',
+    link: '/pcs/click?ad=youtube_side',
   },
 ];
-export const squareAds = [
-    {
-    id: 'ad5',
-    image: `${BASE_URL}/ads/square1.jpeg`,
-    title: 'Make it with Creative Cloud',
-    description: 'Apps for photography, design, video, and web from US$9.99/mo.',
-    link: 'https://www.adobe.com/in/creativecloud.html?sdid=2XBSBSCZ&mv=search&mv2=paidsearch&ef_id=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE:G:s&s_kwcid=AL!3085!3!697692787589!b!!g!!adobe%20character%20animator%20trial!8628335439!158378632541&gad_source=1&gad_campaignid=8628335439&gbraid=0AAAAADoVWmR_tnOFf2AvnWIdGS9ruzpqB&gclid=CjwKCAjwyb3DBhBlEiwAqZLe5L1FZWCmsOXX2SOvIFhx7nOMjcyf4qRA0jbpIetIHCzMbOMJVhKmhBoCVNwQAvD_BwE',
-  },
-      {
-    id: 'ad6',
-    image: `${BASE_URL}/ads/square2.jpeg`,
-    title: 'Hisense TV',
-    description: 'TVs with Dolby Vision HDR and 4K UHD',
-    link: 'https://www.amazon.in/dp/B0F4X6CM36/?aref=%5B%5BCS_MADS_TOKEN%5D%5D&aaxitk=5355da6c92bd6fbbc4f447e1075bedd6&ref=AAP_%7BCREATIVE_ID%7D&tag=ss-us-20&th=1',
-  },
-]
 
-export const belowAds = [...fullAds];
+export const squareAds = [
+  {
+    id: 'adobe_square',
+    image: `${BASE_URL}/adobe_square.png`,
+    title: 'Creative Cloud by Adobe',
+    description: 'Design, edit, and create with the best tools in the industry.',
+    link: '/pcs/click?ad=adobe_square',
+  },
+  {
+    id: 'aws_square',
+    image: `${BASE_URL}/aws_square.png`,
+    title: 'AWS GenAI for Startups',
+    description: 'Build and scale faster with AWS tools and funding support.',
+    link: '/pcs/click?ad=aws_square',
+  },
+  {
+    id: 'semrush_square',
+    image: `${BASE_URL}/semrush_square.png`,
+    title: 'Traffic Analytics by Semrush',
+    description: 'Understand your competitors’ strategies and get ahead.',
+    link: '/pcs/click?ad=semrush_square',
+  },
+  {
+    id: 'workspace_square',
+    image: `${BASE_URL}/workspace_square.png`,
+    title: 'Google Workspace for Business',
+    description: 'Secure business email and collaboration tools for your team.',
+    link: '/pcs/click?ad=workspace_square',
+  },
+];
+
+export const belowAds = [
+  ...fullAds,
+  {
+    id: 'maps_full2',
+    image: `${BASE_URL}/maps_full2.png`,
+    title: 'Advanced Mapping Tools',
+    description: 'Unlock powerful location solutions for enterprise and startups.',
+    link: '/pcs/click?ad=maps_full2',
+  },
+];
+
 
 export const ads = {
   full: fullAds,
