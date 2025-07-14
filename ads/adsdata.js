@@ -7,7 +7,6 @@ export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 export const adStyles = {
   full: {
     maxWidth: '700px',
-    maxHeight: '90px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
@@ -21,7 +20,6 @@ export const adStyles = {
   },
   below: {
     maxWidth: '700px',
-    maxHeight: '90px',
     layout: 'center',
     margin: '12px auto',
     padding: '0',
@@ -34,6 +32,7 @@ export const adStyles = {
     padding: '0',
   },
 };
+
 
 
 export const fullAds = [
