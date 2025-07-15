@@ -13,7 +13,7 @@ export function generateAdScript(type) {
   return `
 (function () {  
   let backState = null;
-
+  window.adBlockerStatus = null;
   const adContainer = document.currentScript.parentElement;
 
   const wrapper = document.createElement('div');
@@ -277,7 +277,7 @@ attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; fo
       bait.clientWidth === 0;
 
     document.body.removeChild(bait);
-
+    window.adBlockerStatus = isBlocked;
     const adContainer = document.currentScript?.parentElement;
     if (!adContainer) return;
 
