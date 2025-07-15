@@ -263,8 +263,7 @@ attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; fo
   const bait = document.createElement('div');
   bait.className = 'adsbox ad-banner sponsored ad-container ad-slot google-ad';
   bait.id = 'ad_test_banner';
-  bait.style.cssText = 'width: 1px;height: 1px;position: absolute;left: -9999px;top: -9999px;z-index: -1;background: url("https://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDT-_rLZBABGA");
-  ';
+  bait.style.cssText = 'width: 1px;height: 1px;position: absolute;left: -9999px;top: -9999px;z-index: -1;background: url("https://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDT-_rLZBABGA");';
   document.body.appendChild(bait);
 
   setTimeout(() => {
