@@ -12,27 +12,27 @@ export function generateAdScript(type) {
 
   return `
 (function () {
-  // === Ad Blocker Detection (minimal) ===
-  const bait = document.createElement('div');
-  bait.className = 'ad-banner adsbox ad-placement';
-  bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;';
-  document.body.appendChild(bait);
+  // // === Ad Blocker Detection (minimal) ===
+  // const bait = document.createElement('div');
+  // bait.className = 'ad-banner adsbox ad-placement';
+  // bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;';
+  // document.body.appendChild(bait);
 
-  const adBlocked = window.getComputedStyle(bait).display === 'none' || bait.offsetParent === null;
-  document.body.removeChild(bait);
+  // const adBlocked = window.getComputedStyle(bait).display === 'none' || bait.offsetParent === null;
+  // document.body.removeChild(bait);
 
-  if (adBlocked) {
-    console.warn("Ad Blocker detected: attempting reinjection");
-    setTimeout(() => {
-      const adContainer = document.currentScript?.parentElement;
-      if (adContainer && adContainer.innerHTML.trim() === '') {
-        const wrapper = document.createElement('div');
-        adContainer.appendChild(wrapper);
-        renderAd(wrapper);
-      }
-    }, 500);
-    return;
-  }
+  // if (adBlocked) {
+  //   console.warn("Ad Blocker detected: attempting reinjection");
+  //   setTimeout(() => {
+  //     const adContainer = document.currentScript?.parentElement;
+  //     if (adContainer && adContainer.innerHTML.trim() === '') {
+  //       const wrapper = document.createElement('div');
+  //       adContainer.appendChild(wrapper);
+  //       renderAd(wrapper);
+  //     }
+  //   }, 500);
+  //   return;
+  // }
   let backState = null;
 
   const adContainer = document.currentScript.parentElement;
@@ -137,7 +137,7 @@ export function generateAdScript(type) {
     // content.appendChild(desc);
 
     const adLink = document.createElement('a');
-    adLink.href = 'https://adscode.onrender.com/pcs/click?xai=abc123&ad=${ad.id}&sig=xyz456&adurl=' + encodeURIComponent('${ad.link}');
+    adLink.href = '${ad.link}';
     adLink.target = '_blank';
     adLink.style.textDecoration = 'none';
     adLink.style.color = 'inherit';
