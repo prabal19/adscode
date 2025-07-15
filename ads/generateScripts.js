@@ -12,27 +12,6 @@ export function generateAdScript(type) {
 
   return `
 (function () {
-  // // === Ad Blocker Detection (minimal) ===
-  // const bait = document.createElement('div');
-  // bait.className = 'ad-banner adsbox ad-placement';
-  // bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;';
-  // document.body.appendChild(bait);
-
-  // const adBlocked = window.getComputedStyle(bait).display === 'none' || bait.offsetParent === null;
-  // document.body.removeChild(bait);
-
-  // if (adBlocked) {
-  //   console.warn("Ad Blocker detected: attempting reinjection");
-  //   setTimeout(() => {
-  //     const adContainer = document.currentScript?.parentElement;
-  //     if (adContainer && adContainer.innerHTML.trim() === '') {
-  //       const wrapper = document.createElement('div');
-  //       adContainer.appendChild(wrapper);
-  //       renderAd(wrapper);
-  //     }
-  //   }, 500);
-  //   return;
-  // }
   let backState = null;
 
   const adContainer = document.currentScript.parentElement;
