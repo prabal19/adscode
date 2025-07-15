@@ -13,7 +13,7 @@ export function generateAdScript(type) {
   return `
 (function () {  
   let backState = null;
-  window.adBlockerStatus = null;
+
   const adContainer = document.currentScript.parentElement;
 
   const wrapper = document.createElement('div');
@@ -259,47 +259,7 @@ attributionWrapper.style.cssText = 'display:inline-block; line-height:1.28em; fo
     return feedbackUI;
   }
 
-  function checkAdBlocker() {
-  const bait = document.createElement('div');
-  bait.className = 'adsbox ad-banner sponsored ad-container ad-slot google-ad';
-  bait.id = 'ad_test_banner';
-  bait.style.cssText = 'width: 1px;height: 1px;position: absolute;left: -9999px;top: -9999px;z-index: -1;background: url("https://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKDT-_rLZBABGA");';
-  document.body.appendChild(bait);
-
-  setTimeout(() => {
-    const style = window.getComputedStyle(bait);
-    const isBlocked =
-      !bait ||
-      bait.offsetParent === null ||
-      style.display === 'none' ||
-      style.visibility === 'hidden' ||
-      bait.clientHeight === 0 ||
-      bait.clientWidth === 0;
-
-    document.body.removeChild(bait);
-    window.adBlockerStatus = isBlocked;
-    const adContainer = document.currentScript?.parentElement;
-    if (!adContainer) return;
-
-    if (isBlocked) {
-      console.warn('Ad Blocker is ON — Ads removed');
-      adContainer.innerHTML = ''; // ✅ Remove entire ad content cleanly
-    } else {
-      console.warn('Ad Blocker is OFF — Rendering ad');
-      adContainer.innerHTML = ''; // Clear any stale or hidden ads
-      const wrapper = document.createElement('div');
-      wrapper.className = 'ad-wrapper';
-      adContainer.appendChild(wrapper);
-      renderAd(wrapper); // ✅ Always render fresh ad
-    }
-  }, 300);
-}
-// Run immediately
-checkAdBlocker();
-
-// Optional: recheck every few seconds (helps if user toggles ad blocker)
-setInterval(checkAdBlocker, 3000);
-
+  renderAd(wrapper);
 })();
 `;
 }
