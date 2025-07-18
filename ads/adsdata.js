@@ -85,6 +85,14 @@ export const fullAds = [
     description: 'Stream the Oscars live and more with unlimited DVR space.',
     link: 'https://tv.youtube.com/learn/oscars/?utm_campaign=ytv_dr_oscars_q1_2025&utm_source=paid_media&utm_medium=dv360&utm_content=imgs&dclid=CjgKEAjwj8jDBhCR6PzYiq_e_0wSJABCIrLJwaxU_nLpYDGnu8NwPLB18qRK_rFdOAIu3W-va5PJE_D_BwE&gclid=Cj0KCQjwj8jDBhD1ARIsACRV2Tv8IohUcW0XdzJYVhMrQoFeDHXVQPGQk8R6UWOarcqHZelSWtsns-IaAu1OEALw_wcB',
   },
+  {
+  id: 'proton_full',
+  image: `${BASE_URL}/ads/proton_full.png`,
+  title: 'Proton VPN – Secure Your Online Freedom',
+  description: 'Protect your privacy with Proton VPN’s fast, no-log encrypted network.',
+  link: 'https://protonvpn.com/l/vpn-home-plans-offer?url_id=0&utm_campaign=ww-all-2c-vpn-gro_aff-g_acq-partners_program&utm_source=aid-tune-11345&utm_medium=link&utm_term=vpn_home_plans_offer_hfp_landing&utm_content=26&phfp=true',
+},
+
 ];
 
 export const sidebarAds = [
@@ -95,6 +103,71 @@ export const sidebarAds = [
     description: 'Get powerful tools like Photoshop and Illustrator in one plan.',
     link: 'https://www.adobe.com/creativecloud/plans.html?plan=individual&sdid=HCS3XFTQ&mv=display&mv2=display',
   },
+  {
+  id: 'honda_side',
+  image: `${BASE_URL}/ads/honda_side.png`,
+  title: 'Honda Special Offers',
+  description: 'Explore the latest lease deals and offers on Honda SUVs and more.',
+  link: 'https://automobiles.honda.com/tools/current-offers?pid=417084910&cid=pdd_dsc_rpa&cmpcd=PRG_namy_plt_su_mid_suv-lease_html_160x600&gclid=Cj0KCQjwm93DBhD_ARIsADR_DjGYcJlRj-SDOI5u8UBjnE9jPrQLP_KZOc7iRILPA5YXiOYrx4wd-_8aAulvEALw_wcB&dclid=CjkKEQjwm93DBhCf4ovg47mp4aQBEiQAwzAKcD_MKFjzMrJ2AYkki57G-HSiwn7KxryfA_juULs4vePw_wcB#modelseries=pilot',
+},
+{
+  id: 'honda_side2',
+  image: `${BASE_URL}/ads/honda_side2.png`,
+  title: 'Honda Passport – Adventure Ready',
+  description: 'Discover the all-new Honda Passport with smart tech and rugged design.',
+  link: 'https://automobiles.honda.com/passport?&pid=417084667&cid=pdd_dsc_rpa&cmpcd=PRG_my26_pas_au_mid_techconnectivity_html_160x600&gclid=Cj0KCQjwm93DBhD_ARIsADR_DjFEDJvDBIfS8I5xQ__g92wKbeAHSJpMwqf9Vl6m0V3m3y_IdDn1SRMaAtpaEALw_wcB&dclid=CjkKEQjwm93DBhCf4ovg47mp4aQBEiQAwzAKcP4kk_N32GFRGJztORH0ZEs_frlsuZxZe8_w2tpu9qTw_wcB',
+},
+{
+  id: 'autodesk_side',
+  image: `${BASE_URL}/ads/autodesk_side.png`,
+  title: 'Autodesk Media & Entertainment',
+  description: 'Create stunning visual effects and animations with Autodesk tools.',
+  link: 'https://www.autodesk.com/campaigns/media-entertainment?mktvar002=7108015%7cDSP%7c33659825%7c423580956%7c236644580',
+},
+{
+  id: 'boeing_side',
+  image: `${BASE_URL}/ads/boeing_side.png`,
+  title: 'Careers at Boeing',
+  description: 'Join Boeing and help build the future of aerospace and innovation.',
+  link: 'https://jobs.boeing.com/bca?ss=paid&utm_campaign=TB360-PROS-P&utm_medium=display&utm_source=TalentBrew360&utm_content=422062323&gclid=Cj0KCQjwm93DBhD_ARIsADR_DjHBq8gnP771O1qyKBJMuIVkhhFQ47adqaIvkbWS280-y3wPre6y7dMaAj8nEALw_wcB',
+},
+{
+  id: 'comcast_side',
+  image: `${BASE_URL}/ads/comcast_side.png`,
+  title: 'Comcast Business Bundles',
+  description: 'Get reliable internet, phone, and TV solutions for your business.',
+  link: 'https://business.comcast.com/business-bundles?CMP=BAC-33620954-6522286-422848377-236223585',
+},
+{
+  id: 'disney_side',
+  image: `${BASE_URL}/ads/disney_side.png`,
+  title: 'Disney+ Bundle – Stream More',
+  description: 'Get Disney+, Hulu, and ESPN+ together. One epic entertainment bundle.',
+  link: 'https://www.disneyplus.com/welcome/disney-hulu-espn-bundle?cid=DSS-ProgDisplay-Oath-31838141-421891008-614324578-235915773&dclid=CjkKEQjwm93DBhCf4ovg47mp4aQBEiQAwzAKcGxyjBsO9_gWbOQpEPcBs22Kb7UlsrrjaWgP0PAhacrw_wcB',
+},
+{
+  id: 'disney_side2',
+  image: `${BASE_URL}/ads/disney_side2.png`,
+  title: 'Disney+, Hulu & Max Bundle',
+  description: 'Stream Disney+, Hulu, and Max together in one powerful bundle.',
+  link: 'https://www.disneyplus.com/welcome/disney-hulu-hbo-max-bundle',
+},
+
+  {
+  id: 'toyota_side',
+  image: `${BASE_URL}/ads/toyota_side.png`,
+  title: 'Toyota Deals & Incentives',
+  description: 'Discover the latest local offers and savings on Toyota vehicles.',
+  link: 'https://www.toyota.com/westernwashington/deals-incentives/?siteid=tda_dis_wwn_wwtdaa_Infillion_inmarket_banner',
+},
+{
+  id: 'proton_side',
+  image: `${BASE_URL}/ads/proton_side.png`,
+  title: 'Proton VPN – Secure Your Browsing',
+  description: 'Stay private online with fast, encrypted VPN from Proton.',
+  link: 'https://protonvpn.com/l/vpn-home-plans-offer?url_id=0&utm_campaign=ww-all-2c-vpn-gro_aff-g_acq-partners_program&utm_source=aid-tune-11345&utm_medium=link&utm_term=vpn_home_plans_offer_hfp_landing&utm_content=26&phfp=true',
+},
+
   {
     id: 'fiverr_side',
     image: `${BASE_URL}/ads/fiverr_side.png`,
