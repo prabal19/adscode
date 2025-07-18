@@ -7,6 +7,8 @@
     'square-ad': 'square',
   };
 
+  const AD_SERVER = "https://adscode.onrender.com/ads";
+
   // === Ad Blocker Detection using image ===
   function checkAdBlocker(callback) {
     const baitImg = document.createElement('img');
@@ -28,22 +30,47 @@
     document.body.appendChild(baitImg);
   }
 
+  // === Check if server is responding for a given ad script type ===
+  function checkServerResponse(type) {
+    return fetch(`${AD_SERVER}/${type}.js`, { method: 'HEAD' })
+      .then(response => response.ok)
+      .catch(() => false);
+  }
+
+  // === Load a single ad script after 2s delay if server is OK ===
+  function injectAdScript(id, type) {
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    checkServerResponse(type).then(ok => {
+      if (ok) {
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.src = `${AD_SERVER}/${type}.js`;
+          script.async = true;
+          container.style.display = 'block';
+          container.appendChild(script);
+          console.log(`[AdLoader] Injected ${type}.js after 2s`);
+        }, 2000);
+      } else {
+        container.innerHTML = '';
+        container.style.display = 'none';
+        console.warn(`[AdLoader] Skipped ${type}.js — server not responding`);
+      }
+    });
+  }
+
   // === Main logic that runs only after ad blocker status is known ===
   function initAdScripts(isBlocked) {
     Object.entries(containers).forEach(([id, type]) => {
       const container = document.getElementById(id);
-
       if (!container) return;
 
       if (isBlocked) {
         container.innerHTML = '';
         container.style.display = 'none';
       } else {
-        container.style.display = 'block';
-        const script = document.createElement('script');
-        script.src = `https://adscode.onrender.com/ads/${type}.js`;
-        script.async = true;
-        container.appendChild(script);
+        injectAdScript(id, type);
       }
     });
   }
