@@ -50,7 +50,7 @@
           script.async = true;
           container.style.display = 'block';
           container.appendChild(script);
-          console.log(`[AdLoader] Injected ${type}.js after 2s`);
+          console.log(`[AdLoader] Injected ${type}.js`);
         }, 2000);
       } else {
         container.innerHTML = '';
