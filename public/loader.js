@@ -7,7 +7,7 @@
     'square-ad': 'square',
   };
 
-  const AD_SERVER = "https://adscode.onrender.com/ads";
+  const AD_SERVER = "https://adscode-z00q.onrender.com/ads";
 
   // === Ad Blocker Detection using image ===
   function checkAdBlocker(callback) {
